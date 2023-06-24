@@ -12,13 +12,11 @@ const wrapper = css({
   minHeight: '100%',
 });
 
-function App() {
-  return (
-    <main css={wrapper}>
-      <Global styles={reset} />
-      <Outlet />
-    </main>
-  );
-}
+const App = () => (
+  <main css={wrapper}>
+    <Global styles={reset} />
+    <Outlet />
+  </main>
+);
 
 export default App;

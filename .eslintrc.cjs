@@ -26,7 +26,14 @@ module.exports = {
         'ts': 'never',
         'tsx': 'never'
       }
-    ]
+    ],
+    "react/function-component-definition":[
+      2,
+      { "namedComponents": [
+          "arrow-function",
+          "function-declaration"
+        ] }
+    ],
   },
   settings: {
     'import/resolver': {
