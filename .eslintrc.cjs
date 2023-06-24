@@ -7,5 +7,8 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+    "react/react-in-jsx-scope": "off",
+    "comma-dangle": "never"
   },
 };
