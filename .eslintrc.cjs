@@ -24,7 +24,8 @@ module.exports = {
         'js': 'never',
         'jsx': 'never',
         'ts': 'never',
-        'tsx': 'never'
+        'tsx': 'never',
+        "": "never"
       }
     ],
     "react/function-component-definition":[
@@ -34,10 +35,12 @@ module.exports = {
           "function-declaration"
         ] }
     ],
+    "import/no-unresolved": "off"
   },
   settings: {
     'import/resolver': {
       node: {
+        paths: ["src"],
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
     },
