@@ -10,5 +10,6 @@ module.exports = {
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': 'off',
+    'import/prefer-default-export': ['off'],
   },
 };
