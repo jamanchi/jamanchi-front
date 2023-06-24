@@ -1,5 +1,6 @@
 import { Global } from '@emotion/react';
 import { css } from '@emotion/css';
+import { Outlet } from 'react-router-dom';
 import { layout } from './style/variables';
 import reset from './style/reset';
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <main css={wrapper}>
       <Global styles={reset} />
+      <Outlet />
     </main>
   );
 }
