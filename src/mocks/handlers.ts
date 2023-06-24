@@ -1,36 +1,38 @@
 import { rest } from 'msw';
 
+let count = 0;
+
 export const handlers = [
-  rest.post('/login', (req, res, ctx) => {
-    // Persist user's authentication in the session
-    sessionStorage.setItem('is-authenticated', 'true');
-
-    return res(
-      // Respond with a 200 status code
-      ctx.status(200)
-    );
-  }),
-
-  rest.get('/user', (req, res, ctx) => {
-    // Check if the user is authenticated in this session
-    const isAuthenticated = sessionStorage.getItem('is-authenticated');
-
-    if (!isAuthenticated) {
-      // If not authenticated, respond with a 403 error
-      return res(
-        ctx.status(403),
-        ctx.json({
-          errorMessage: 'Not authorized',
-        })
-      );
-    }
-
-    // If authenticated, return a mocked user details
-    return res(
+  // 답변결과조회
+  rest.get('/api/v1/answer', (_, res, ctx) =>
+    res(
       ctx.status(200),
       ctx.json({
-        username: 'admin',
+        cost: {
+          price: 10000,
+          avgPrice: 30000,
+        },
+        description: '스키에 대한 설명입니다.',
+        items: {
+          item: '물건과 가격정보',
+        },
       })
-    );
+    )
+  ),
+
+  // 서비스 이용횟수조회 (get)
+  rest.get('/api/v1/summary', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        totalCount: count,
+      })
+    )
+  ),
+
+  // 이용횟수증가(put)입니다
+  rest.put('/api/v1/summary', (_, res, ctx) => {
+    count += 1;
+    return res(ctx.status(200));
   }),
 ];
