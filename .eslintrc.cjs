@@ -16,5 +16,23 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': 'off',
     'import/prefer-default-export': ['off'],
+    'react/no-unknown-property': ['error', { 'ignore': ['css'] }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        'js': 'never',
+        'jsx': 'never',
+        'ts': 'never',
+        'tsx': 'never'
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+    },
   },
 };
