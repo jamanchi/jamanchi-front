@@ -36,6 +36,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
   },
   settings: {
     'import/resolver': {
