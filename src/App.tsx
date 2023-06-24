@@ -1,22 +1,22 @@
 import { Global } from '@emotion/react';
-import { css } from '@emotion/css';
 import { Outlet } from 'react-router-dom';
+import styled from '@emotion/styled';
 import { layout } from './style/variables';
 import reset from './style/reset';
 
-const wrapper = css({
-  margin: '0 auto',
-  display: 'flex',
-  flexDirection: 'column',
-  width: layout.width,
-  height: layout.height,
-});
-
 const App = () => (
-  <main css={wrapper}>
+  <Wrapper>
     <Global styles={reset} />
     <Outlet />
-  </main>
+  </Wrapper>
 );
+
+const Wrapper = styled.main`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: ${layout.width};
+  height: ${layout.height};
+`;
 
 export default App;

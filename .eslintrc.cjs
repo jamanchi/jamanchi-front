@@ -35,7 +35,8 @@ module.exports = {
           "function-declaration"
         ] }
     ],
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-use-before-define": "off"
   },
   settings: {
     'import/resolver': {
