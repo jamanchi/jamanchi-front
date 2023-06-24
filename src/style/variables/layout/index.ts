@@ -1,4 +1,4 @@
 export const layout = {
-  maxWidth: '400px',
-  maxHeight: '790px',
+  width: '400px',
+  height: '790px',
 };

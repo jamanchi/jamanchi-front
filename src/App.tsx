@@ -8,8 +8,8 @@ const wrapper = css({
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
-  maxWidth: layout.maxWidth,
-  minHeight: '100%',
+  width: layout.width,
+  height: layout.height,
 });
 
 const App = () => (
