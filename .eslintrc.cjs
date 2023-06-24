@@ -16,32 +16,31 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': 'off',
     'import/prefer-default-export': ['off'],
-    'react/no-unknown-property': ['error', { 'ignore': ['css'] }],
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
     'import/extensions': [
       'error',
       'ignorePackages',
       {
-        'js': 'never',
-        'jsx': 'never',
-        'ts': 'never',
-        'tsx': 'never',
-        "": "never"
-      }
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        '': 'never',
+      },
     ],
-    "react/function-component-definition":[
+    'react/function-component-definition': [
       2,
-      { "namedComponents": [
-          "arrow-function",
-          "function-declaration"
-        ] }
+      { namedComponents: ['arrow-function', 'function-declaration'] },
     ],
-    "import/no-unresolved": "off",
-    "no-use-before-define": "off"
+    'import/no-unresolved': 'off',
+    'no-use-before-define': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     'import/resolver': {
       node: {
-        paths: ["src"],
+        paths: ['src'],
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
     },
