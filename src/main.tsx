@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 
-if (process.env.NODE_ENV === 'development') {
-  const { worker } = await import('./mocks/browser.ts');
-  worker.start();
-}
+(async () => {
+  if (import.meta.env.DEV) {
+    const { worker } = await import('./mocks/browser');
+    worker.start();
+  }
+})();
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
