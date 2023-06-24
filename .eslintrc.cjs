@@ -6,7 +6,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/no-extraneous-dependencies': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': 'off',
