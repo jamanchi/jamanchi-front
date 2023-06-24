@@ -1,6 +1,11 @@
 module.exports = {
   env: { browser: true, es2020: true },
-  extends: ['plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb/hooks'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'airbnb/hooks',
+    'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   plugins: ['react-refresh'],
