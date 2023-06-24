@@ -1,4 +1,5 @@
 import { colors } from './color';
 import { layout } from './layout';
+import { font } from './font';
 
-export { colors, layout };
+export { colors, layout, font };
