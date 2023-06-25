@@ -1,4 +1,5 @@
 import { Global } from '@emotion/react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -19,7 +20,9 @@ const App = () => {
     >
       <Wrapper>
         <Global styles={reset} />
-        <Outlet />
+        <Suspense fallback={<div>loading</div>}>
+          <Outlet />
+        </Suspense>
       </Wrapper>
     </ErrorBoundary>
   );
