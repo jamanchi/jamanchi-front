@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Navigation from '@/components/Navigation';
-import { colors } from '../../style/variables/color/index';
+import { colors, shadow } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';
+import { pageContainer } from '@/style/mixin';
 
 interface Hobbies {
   hobbies: Hobby[];
@@ -33,7 +34,6 @@ const HobbyOptions = () => {
       refetchOnWindowFocus: false,
     }
   );
-  console.log(data);
 
   const nextPage = (_, hobbyId: number) => {
     navigate(`/question/step3/${hobbyId}`);
@@ -44,40 +44,34 @@ const HobbyOptions = () => {
   }
 
   return (
-    <>
+    <Wrapper>
       <Navigation leftOnClick={previousBtn} />
-      <Wrapper>
-        <Title>{`${data?.length}개의 취미가 추천되었습니다`}</Title>
-        <SubTitle>{HOBBYOPTIONS_CHOICE}</SubTitle>
-        {isLoading ? (
-          <span>{LODING}</span>
-        ) : (
-          <Grid>
-            {data?.map((object: Hobby, index: number) => (
-              <HobbyBox key={index} onClick={(_) => nextPage(_, object.id)}>
-                {object.name}
-              </HobbyBox>
-            ))}
-          </Grid>
-        )}
-      </Wrapper>
-    </>
+      <Title>{`${data?.length}개의 취미가 추천되었습니다`}</Title>
+      <SubTitle>{HOBBYOPTIONS_CHOICE}</SubTitle>
+      {isLoading ? (
+        <span>{LODING}</span>
+      ) : (
+        <Grid>
+          {data?.map((object: Hobby, index: number) => (
+            <HobbyBox key={index} onClick={(_) => nextPage(_, object.id)}>
+              {object.name}
+            </HobbyBox>
+          ))}
+        </Grid>
+      )}
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  ${pageContainer};
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-top: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  box-shadow: ${shadow.box};
+  padding-top: 10px;
+  border-radius: 20px;
   box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 const Title = styled.div`
@@ -111,7 +105,7 @@ const HobbyBox = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   height: 50px;
   border-radius: 20px;
-
+  cursor: pointer;
   &:hover {
     background-color: ${colors.primary};
     color: white;

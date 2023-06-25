@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { colors } from '@/style/variables';
 import { KEYWORDS } from './constants';
+import { pageContainer } from '@/style/mixin';
+import { shadow } from '@/style/variables/color';
 
 const keywordsSet = new Set();
 
@@ -23,7 +25,7 @@ const Keywords = () => {
       setSelectedKeywords(new Set(keywordsSet));
       return;
     }
-    console.log(selectedKeywords);
+
     if (keywordsSet.size === 2) return;
     keywordsSet.add(keywordId);
     setSelectedKeywords(new Set(keywordsSet));
@@ -31,64 +33,59 @@ const Keywords = () => {
 
   const handleResultBtn = () => {
     if (keywordsSet.size === 0) return;
-    if (keywordsSet.size === 2) {
-      const [first, second] = [...selectedKeywords];
-
-      const goToPosts = () =>
-        navigate({
-          pathname: '/result',
-          search: `?id=${id}&keywords=${first},${second}`,
-        });
-      keywordsSet.clear();
-      goToPosts();
+    const [first, second] = [...selectedKeywords];
+    if (keywordsSet.size === 1) {
+      navigate({
+        pathname: '/result',
+        search: `?id=${id}&keywords=${first}`,
+      });
     }
+    if (keywordsSet.size === 2) {
+      navigate({
+        pathname: '/result',
+        search: `?id=${id}&keywords=${first},${second}`,
+      });
+    }
+    keywordsSet.clear();
   };
 
   return (
-    <>
+    <Wrapper>
       <Navigation leftOnClick={previousBtn} />
-      <Wrapper>
-        <Title>원하는 키워드를 골라주세요</Title>
+      <Title>원하는 키워드를 골라주세요</Title>
 
-        <Grid>
-          {KEYWORDS?.map((object, index) => (
-            <KeywordBox
-              key={index}
-              style={{
-                backgroundColor: keywordsSet.has(object.id)
-                  ? colors.primary
-                  : '',
-                color: keywordsSet.has(object.id) ? colors.secondary : '',
-                fontWeight: keywordsSet.has(object.id) ? '700' : '400',
-              }}
-              onClick={(_) => run(_, object.id)}
-            >
-              {object.keyword}
-            </KeywordBox>
-          ))}
-        </Grid>
-        <Limit>
-          <span>최대 2개까지 선택가능</span>
-        </Limit>
-        <ResultBtn onClick={handleResultBtn}>결과 보기</ResultBtn>
-      </Wrapper>
-    </>
+      <Grid>
+        {KEYWORDS?.map((object, index) => (
+          <KeywordBox
+            key={index}
+            style={{
+              backgroundColor: keywordsSet.has(object.id) ? colors.primary : '',
+              color: keywordsSet.has(object.id) ? colors.secondary : '',
+              fontWeight: keywordsSet.has(object.id) ? '700' : '400',
+            }}
+            onClick={(_) => run(_, object.id)}
+          >
+            {object.keyword}
+          </KeywordBox>
+        ))}
+      </Grid>
+      <Limit>
+        <span>최대 2개까지 선택가능</span>
+      </Limit>
+      <ResultBtn onClick={handleResultBtn}>결과 보기</ResultBtn>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  ${pageContainer};
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-top: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  padding-top: 10px;
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
   box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 const Title = styled.div`
@@ -130,7 +127,7 @@ const KeywordBox = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   height: 50px;
   border-radius: 20px;
-
+  cursor: pointer;
   &:hover {
     background-color: ${colors.primary};
     color: white;
@@ -144,7 +141,7 @@ const ResultBtn = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  width: 100%;
+  cursor: pointer;
   height: 70px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
   border-radius: 20px;
