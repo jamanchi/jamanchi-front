@@ -96,10 +96,12 @@ const CardList = styled.div`
   display: flex;
   justify-content: start;
   width: ${WIDTH}px;
-  height: 150px;
   gap: 24px;
+  font-size: 0.8rem;
+  height: auto;
   margin: 0;
   padding: 0;
+  text-align: center;
 `;
 
 const CardItem = styled(Card)<{
@@ -114,7 +116,8 @@ const CardItem = styled(Card)<{
 `;
 
 const Pagination = styled.ul`
-  margin-top: 28px;
+  height: 8px;
+  margin-top: 18px;
   display: flex;
   gap: 8px;
 `;
