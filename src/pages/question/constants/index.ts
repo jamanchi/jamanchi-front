@@ -72,47 +72,47 @@ export const KEYWORDS = Object.freeze([
 
 export const MAIN_CATEGORY_DATA = [
   {
-    id: 0,
+    id: 1,
     name: '스포츠',
     iconSrc: 'src/assets/icons/운동.png',
   },
   {
-    id: 1,
+    id: 2,
     name: '창작',
     iconSrc: 'src/assets/icons/창작.png',
   },
   {
-    id: 2,
+    id: 3,
     name: '요리',
     iconSrc: 'src/assets/icons/요리.png',
   },
   {
-    id: 3,
+    id: 4,
     name: '음악',
     iconSrc: 'src/assets/icons/음악.png',
   },
   {
-    id: 4,
+    id: 5,
     name: '수집',
     iconSrc: 'src/assets/icons/수집.png',
   },
   {
-    id: 5,
+    id: 6,
     name: '독서',
     iconSrc: 'src/assets/icons/독서.png',
   },
   {
-    id: 6,
+    id: 7,
     name: '여행',
     iconSrc: 'src/assets/icons/여행.png',
   },
   {
-    id: 7,
+    id: 8,
     name: '식물 관리',
     iconSrc: 'src/assets/icons/식물.png',
   },
   {
-    id: 8,
+    id: 9,
     name: '수상 활동',
     iconSrc: 'src/assets/icons/수상.png',
   },

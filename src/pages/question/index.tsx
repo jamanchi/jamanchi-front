@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { useQuery } from '@tanstack/react-query';
 import Navigation from '@/components/Navigation';
 import { colors } from '../../style/variables/color/index';
 import { MAIN_CATEGORY_DATA, MAIN_CATEGORY_TITLE } from './constants';
@@ -18,7 +17,7 @@ const Question = () => {
     <>
       <Navigation
         leftOnClick={() => {
-          navigate(-1);
+          navigate('/');
         }}
       />
       <Wrapper>
@@ -32,7 +31,7 @@ const Question = () => {
             <Category
               key={data.id}
               onClick={
-                data.id === 0 ? () => navigate(`step1/${data.id}`) : undefined
+                data.id === 1 ? () => navigate(`step1/${data.id}`) : undefined
               }
             >
               <img

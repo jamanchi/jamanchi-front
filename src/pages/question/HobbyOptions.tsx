@@ -10,8 +10,9 @@ interface Hobbies {
 }
 
 interface Hobby {
-  hobby: string;
+  name: string;
   id: number;
+  image: string;
 }
 
 const HobbyOptions = () => {
@@ -20,7 +21,7 @@ const HobbyOptions = () => {
   const { id } = useParams();
 
   const fetchData = async () => {
-    const response = await fetch(`/api/v1/questionResult/${id}`);
+    const response = await fetch(`/api/v1/hobbies/recommend/${id}`);
     const categoryList = await response?.json();
     return categoryList;
   };
@@ -32,6 +33,7 @@ const HobbyOptions = () => {
       refetchOnWindowFocus: false,
     }
   );
+  console.log(data);
 
   const nextPage = (_, hobbyId: number) => {
     navigate(`/question/step3/${hobbyId}`);
@@ -45,15 +47,15 @@ const HobbyOptions = () => {
     <>
       <Navigation leftOnClick={previousBtn} />
       <Wrapper>
-        <Title>{`${data?.hobbies.length}개의 취미가 추천되었습니다`}</Title>
+        <Title>{`${data?.length}개의 취미가 추천되었습니다`}</Title>
         <SubTitle>{HOBBYOPTIONS_CHOICE}</SubTitle>
         {isLoading ? (
           <span>{LODING}</span>
         ) : (
           <Grid>
-            {data?.hobbies?.map((object: Hobby, index: number) => (
+            {data?.map((object: Hobby, index: number) => (
               <HobbyBox key={index} onClick={(_) => nextPage(_, object.id)}>
-                {object.hobby}
+                {object.name}
               </HobbyBox>
             ))}
           </Grid>

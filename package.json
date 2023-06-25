@@ -9,7 +9,8 @@
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
