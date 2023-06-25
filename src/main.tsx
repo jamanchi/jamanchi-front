@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Question />,
       },
       {
-        path: 'question/step1',
+        path: 'question/step1/:id',
         element: <SubCategory />,
       },
       {
@@ -38,14 +38,12 @@ const router = createBrowserRouter([
         element: <HobbyOptions />,
       },
       {
-        path: 'question/step3',
+        path: 'question/step3/:id',
         element: <Keywords />,
       },
     ],
   },
 ]);
-const queryClient = new QueryClient();
-
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
