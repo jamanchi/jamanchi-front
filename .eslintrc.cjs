@@ -34,8 +34,6 @@ module.exports = {
     ],
     'import/no-unresolved': 'off',
     'no-use-before-define': 'off',
-    'react/require-default-props': 'off',
-    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     'import/resolver': {
