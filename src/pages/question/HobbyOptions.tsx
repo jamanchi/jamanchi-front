@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { MouseEvent } from 'react';
 import Navigation from '@/components/Navigation';
 import { colors, shadow } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';
@@ -31,7 +32,7 @@ const HobbyOptions = () => {
     }
   );
 
-  const nextPage = (_, hobbyId: number) => {
+  const nextPage = (_: MouseEvent<HTMLElement>, hobbyId: number) => {
     navigate(`/question/step3/${hobbyId}`);
   };
 

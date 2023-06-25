@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { colors } from '@/style/variables';
 import { KEYWORDS } from './constants';
 import { pageContainer } from '@/style/mixin';
 import { shadow } from '@/style/variables/color';
 
-const keywordsSet = new Set();
+const keywordsSet: Set<number> = new Set();
 
 const Keywords = () => {
   const navigate = useNavigate();
@@ -17,9 +17,9 @@ const Keywords = () => {
   };
   const { id } = useParams();
 
-  const [selectedKeywords, setSelectedKeywords] = useState();
+  const [selectedKeywords, setSelectedKeywords] = useState<Set<number>>();
 
-  const run = (_, keywordId: number) => {
+  const run = (_: MouseEvent, keywordId: number) => {
     if (keywordsSet.has(keywordId)) {
       keywordsSet.delete(keywordId);
       setSelectedKeywords(new Set(keywordsSet));
@@ -33,7 +33,7 @@ const Keywords = () => {
 
   const handleResultBtn = () => {
     if (keywordsSet.size === 0) return;
-    const [first, second] = [...selectedKeywords];
+    const [first, second] = [...selectedKeywords!];
     if (keywordsSet.size === 1) {
       navigate({
         pathname: '/result',
