@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 const fetchHobbies = async () =>
   await (await fetch(`/api/v1/hobbies/sub`)).json();
