@@ -1,4 +1,3 @@
-import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
@@ -24,12 +23,14 @@ interface IResultItem {
 const Result = () => {
   const { getParams } = useQueryString();
   const navigate = useNavigate();
+  const previousBtn = () => navigate(-1);
   const getResult = async (hobbyId: string, keywords: string[]) => {
     const data = await (
       await fetch(
         `/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
       )
     ).json();
+
     return data;
   };
   const hobbyId = getParams('id') || '';
@@ -40,7 +41,7 @@ const Result = () => {
 
   return (
     <Wrapper>
-      <Navigation right={<AiOutlinePlusCircle size="30" />} />
+      <Navigation leftOnClick={previousBtn} />
       <Title>{resultData?.title}</Title>
       <Image src={resultData?.image} alt={`${resultData?.title} 이미지`} />
       {resultData && <ResultCard resultData={resultData} />}
