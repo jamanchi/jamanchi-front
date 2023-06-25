@@ -54,7 +54,11 @@ const Result = () => {
         >
           공유하기
         </ShareButton>
-        <HobbyCheckButton onClick={() => navigate('/similarHobbies')}>
+        <HobbyCheckButton
+          onClick={() =>
+            navigate('/similarHobbies', { state: resultData?.title })
+          }
+        >
           비슷한 취미 확인하기
         </HobbyCheckButton>
       </ButtonWrapper>
