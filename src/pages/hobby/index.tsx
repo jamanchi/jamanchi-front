@@ -9,6 +9,7 @@ import demo from '@/assets/images/demo.png';
 import Ripple from '@/components/Ripple';
 import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
 import useIntersect from '@/pages/hobby/hooks/useIntersect';
+import { shadow } from '@/style/variables/color';
 
 const Hobby = () => {
   const navigate = useNavigate();
@@ -57,19 +58,19 @@ const Hobby = () => {
     </Container>
   );
 };
-const PADDING = 20;
-const GAP = 20;
+const PADDING = 40;
+const GAP = 30;
 const SPAN = 2;
 
 const Container = styled.div`
   ${pageContainer};
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
+  padding-top: 20px;
 `;
 
 const ContentContainer = styled.div`
-  ${pageContainer};
-  padding: ${PADDING}px;
-  gap: ${GAP}px;
-
+  margin-top: 10px;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -79,9 +80,10 @@ const ContentContainer = styled.div`
 `;
 
 const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: ${GAP}px;
+  margin-left: 10px;
 `;
 
 const CardContainer = styled(Card)`
@@ -97,7 +99,6 @@ const CardContainer = styled(Card)`
 `;
 
 const CardMedia = styled.img`
-  width: 100%;
   height: 100%;
   border-radius: 20px;
   filter: brightness(80%);
