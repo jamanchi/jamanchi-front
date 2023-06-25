@@ -8,6 +8,7 @@ import SubCategory from './pages/question/SubCategory';
 import Main from '@/pages/main';
 import HobbyOptions from './pages/question/HobbyOptions';
 import Keywords from './pages/question/Keywords';
+import Result from '@/pages/result';
 
 (async () => {
   if (import.meta.env.DEV) {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'question/step3/:id',
         element: <Keywords />,
+      },
+      {
+        path: 'result',
+        element: <Result />,
       },
     ],
   },

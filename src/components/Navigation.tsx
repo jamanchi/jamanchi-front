@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
-  margin-left: 25px;
+  margin-left: 20px;
   margin-right: auto;
   cursor: pointer;
 `;
