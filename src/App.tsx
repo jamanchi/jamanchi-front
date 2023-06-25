@@ -9,7 +9,7 @@ import ErrorFallback from '@/components/ErrorFallback';
 
 const App = () => {
   const { reset: errorReset } = useQueryErrorResetBoundary();
-  throw Error('dd');
+
   return (
     <ErrorBoundary
       onReset={errorReset}
