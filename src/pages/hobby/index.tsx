@@ -21,28 +21,25 @@ const mokupData = [
 const Hobby = () => {
   const target = useRef<HTMLDivElement | null>(null);
 
-  const observerCallback = () => {
+  const handleIntersection = () => {
     if (target.current !== null) {
       console.log('test');
     }
   };
 
-  const options = useMemo(
-    () => ({
-      threshold: 1.0,
-    }),
-    []
-  );
-
   const observer = useMemo(
-    () => new IntersectionObserver(observerCallback, options),
-    [options]
+    () => new IntersectionObserver(handleIntersection),
+    []
   );
 
   useEffect(() => {
     if (target.current !== null) {
       observer.observe(target.current);
     }
+
+    return () => {
+      observer.disconnect();
+    };
   }, [observer]);
 
   return (
