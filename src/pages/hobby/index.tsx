@@ -1,66 +1,52 @@
 import styled from '@emotion/styled';
-import { useEffect, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { pageContainer } from '@/style/mixin';
 import Navigation from '@/components/Navigation';
 import Card from '@/components/Card';
 import { colors } from '@/style/variables';
 import demo from '@/assets/images/demo.png';
 import Ripple from '@/components/Ripple';
-
-const mokupData = [
-  { name: '공', description: ['#test', '#test', '#test'] },
-  { name: '야구', description: ['#test', '#test', '#test'] },
-  { name: '스위스', description: ['#test', '#test', '#test'] },
-  { name: '배드민턴', description: ['#test', '#test', '#test'] },
-  { name: '스노우 보드', description: ['#test', '#test', '#test'] },
-  { name: '스케이트 보드', description: ['#test', '#test', '#test'] },
-  { name: '인라인 스케이트', description: ['#test', '#test', '#test'] },
-  { name: '명가 찰떡파이 키위', description: ['#test', '#test', '#test'] },
-];
+import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
+import useIntersect from '@/pages/hobby/hooks/useIntersect';
 
 const Hobby = () => {
-  const target = useRef<HTMLDivElement | null>(null);
+  const { data, isFetching, fetchNextPage } = useFetchHobbies();
 
-  const handleIntersection = () => {
-    if (target.current !== null) {
-      console.log('test');
+  const hobbies = useMemo(
+    () => (data ? data.pages.flatMap((data) => data.contents) : []),
+    [data]
+  );
+
+  const handleIntersect = (
+    entry: IntersectionObserverEntry,
+    observer: IntersectionObserver
+  ) => {
+    observer.unobserve(entry.target);
+    if (!isFetching) {
+      fetchNextPage();
     }
   };
 
-  const observer = useMemo(
-    () => new IntersectionObserver(handleIntersection),
-    []
-  );
-
-  useEffect(() => {
-    if (target.current !== null) {
-      observer.observe(target.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [observer]);
+  const ref = useIntersect(handleIntersect);
 
   return (
     <Container>
       <Navigation />
       <ContentContainer>
         <List>
-          {mokupData.map((data) => (
+          {hobbies.map((data) => (
             <CardContainer>
               <CardMedia src={demo} alt={data.name} />
               <CardContent text={data.name}>{data.name}</CardContent>
               <Ripple duration={700} color="#ffffff" />
             </CardContainer>
           ))}
-          <div ref={target}>test</div>
+          <div ref={ref}>test</div>
         </List>
       </ContentContainer>
     </Container>
   );
 };
-
 const PADDING = 20;
 const GAP = 20;
 const SPAN = 2;
