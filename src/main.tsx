@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Question from './pages/question';
-import MainCategory from './pages/question/SubCategory';
+import SubCategory from './pages/question/SubCategory';
 import Main from '@/pages/main';
 
 (async () => {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'question/step1',
-        element: <MainCategory />,
+        element: <SubCategory />,
       },
     ],
   },
