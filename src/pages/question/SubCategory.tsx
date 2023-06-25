@@ -25,7 +25,7 @@ const SubCategory = () => {
   const navigate = useNavigate();
   const previousBtn = () => navigate('/question');
   const getResult = async () => {
-    const ids = `${id}${selectedStep1Option}${selectedStep2Option}${selectedStep3Option}`;
+    const ids = `${id}-${selectedStep1Option}${selectedStep2Option}${selectedStep3Option}`;
     navigate(`/question/step2/${ids}`);
   };
 

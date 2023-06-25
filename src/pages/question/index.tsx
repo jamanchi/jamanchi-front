@@ -15,7 +15,7 @@ interface Data {
 
 const Question = () => {
   const fetchData = async () => {
-    const response = await fetch(`/api/v1/maincategory/list`);
+    const response = await fetch(`/api/v1/hobbies/main`);
     const categoryList = await response?.json();
     return categoryList;
   };
