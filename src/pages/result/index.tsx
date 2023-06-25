@@ -68,6 +68,7 @@ const Result = () => {
 
 const Wrapper = styled.div`
   ${pageContainer}
+  overflow: hidden;
 `;
 
 const Title = styled.span`
