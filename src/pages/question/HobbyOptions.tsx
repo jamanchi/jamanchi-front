@@ -6,10 +6,6 @@ import { colors, shadow } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';
 import { pageContainer } from '@/style/mixin';
 
-interface Hobbies {
-  hobbies: Hobby[];
-}
-
 interface Hobby {
   name: string;
   id: number;
@@ -27,7 +23,7 @@ const HobbyOptions = () => {
     return categoryList;
   };
 
-  const { isLoading, isError, data, error } = useQuery<Hobbies>(
+  const { isLoading, isError, data, error } = useQuery<Hobby[]>(
     ['datas', id],
     fetchData,
     {
