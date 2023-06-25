@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import Navigation from '@/components/Navigation';
 import { colors } from '../../style/variables/color/index';
 import { MAIN_CATEGORY_TITLE } from './constants';
@@ -14,19 +14,25 @@ interface Data {
 }
 
 const Question = () => {
-  const [datas, setData] = useState<Datas>();
+  const fetchData = async () => {
+    const response = await fetch(`/api/v1/maincategory/list`);
+    const categoryList = await response?.json();
+    return categoryList;
+  };
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(`/api/v1/maincategory/list`);
-      const categoryList = await response?.json();
-      setData(categoryList);
-    };
-
-    getData();
-  }, []);
+  const { isLoading, isError, data, error } = useQuery<Datas>(
+    ['datas'],
+    fetchData,
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const navigate = useNavigate();
+
+  if (isError) {
+    throw error;
+  }
 
   return (
     <>
@@ -36,26 +42,28 @@ const Question = () => {
           <span>{MAIN_CATEGORY_TITLE.FIRST}</span>
           <span>{MAIN_CATEGORY_TITLE.SECOND}</span>
         </Title>
-        <Grid>
-          {datas?.map((data: Data) => (
-            <Category
-              key={data.id}
-              onClick={
-                data.id === 0
-                  ? () => navigate('step1', { state: { id: data.id } })
-                  : undefined
-              }
-            >
-              <img
-                width="40"
-                height="43"
-                src={`${data.iconSrc}`}
-                alt={`${data.id}`}
-              />
-              <span>{data.name}</span>
-            </Category>
-          ))}
-        </Grid>
+        {isLoading ? (
+          <span>로딩중</span>
+        ) : (
+          <Grid>
+            {data?.map((data: Data) => (
+              <Category
+                key={data.id}
+                onClick={
+                  data.id === 0 ? () => navigate(`step1/${data.id}`) : undefined
+                }
+              >
+                <img
+                  width="40"
+                  height="43"
+                  src={`${data.iconSrc}`}
+                  alt={`${data.id}`}
+                />
+                <span>{data.name}</span>
+              </Category>
+            ))}
+          </Grid>
+        )}
       </Wrapper>
     </>
   );
