@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import Navigation from '@/components/Navigation';
 import { colors } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';

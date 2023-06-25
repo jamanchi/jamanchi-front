@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import Navigation from '@/components/Navigation';
 import { colors } from '../../style/variables/color/index';
 import { MAIN_CATEGORY_TITLE } from './constants';
