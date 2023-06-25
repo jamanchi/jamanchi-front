@@ -95,7 +95,13 @@ export const handlers = [
     res(
       ctx.status(200),
       ctx.json({
-        취미s: ['배드민턴', '야구', '축구', '농구', '골프'],
+        hobbies: [
+          { hobby: '이종격투기', id: 1 },
+          { hobby: '양궁', id: 2 },
+          { hobby: '요트', id: 3 },
+          { hobby: '우주 유영', id: 4 },
+          { hobby: '아이스하키', id: 5 },
+        ],
       })
     )
   ),
