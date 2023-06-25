@@ -36,7 +36,11 @@ const Question = () => {
 
   return (
     <>
-      <Navigation />
+      <Navigation
+        leftOnClick={() => {
+          navigate(-1);
+        }}
+      />
       <Wrapper>
         <Title>
           <span>{MAIN_CATEGORY_TITLE.FIRST}</span>

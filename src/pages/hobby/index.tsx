@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { pageContainer } from '@/style/mixin';
 import Navigation from '@/components/Navigation';
 import Card from '@/components/Card';
@@ -10,6 +11,7 @@ import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
 import useIntersect from '@/pages/hobby/hooks/useIntersect';
 
 const Hobby = () => {
+  const navigate = useNavigate();
   const { data, isFetching, fetchNextPage } = useFetchHobbies();
 
   const hobbies = useMemo(
@@ -31,11 +33,19 @@ const Hobby = () => {
 
   return (
     <Container>
-      <Navigation />
+      <Navigation
+        leftOnClick={() => {
+          navigate(-1);
+        }}
+      />
       <ContentContainer>
         <List>
           {hobbies.map((data) => (
-            <CardContainer>
+            <CardContainer
+              onClick={() => {
+                navigate('/question/step3/1');
+              }}
+            >
               <CardMedia src={demo} alt={data.name} />
               <CardContent text={data.name}>{data.name}</CardContent>
               <Ripple duration={700} color="#ffffff" />
