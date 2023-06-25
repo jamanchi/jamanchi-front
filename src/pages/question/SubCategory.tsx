@@ -10,7 +10,7 @@ import {
   SUB_CATEGORY_RESULT,
 } from './constants';
 
-export default function SubCategory() {
+const SubCategory = () => {
   const [selectedStep1Option, setSelectedStep1Option] = useState(0);
   const [selectedStep2Option, setSelectedStep2Option] = useState(0);
   const [selectedStep3Option, setSelectedStep3Option] = useState(0);
@@ -104,7 +104,7 @@ export default function SubCategory() {
       </Wrapper>
     </>
   );
-}
+};
 
 const Wrapper = styled.div`
   background-color: white;
@@ -175,3 +175,5 @@ const ResultBtn = styled.div`
     color: black;
   }
 `;
+
+export default SubCategory;

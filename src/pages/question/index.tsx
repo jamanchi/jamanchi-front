@@ -13,7 +13,7 @@ interface Data {
   iconSrc: string;
 }
 
-function Question() {
+const Question = () => {
   const [datas, setData] = useState<Datas>();
 
   useEffect(() => {
@@ -59,9 +59,7 @@ function Question() {
       </Wrapper>
     </>
   );
-}
-
-export default Question;
+};
 
 const Wrapper = styled.div`
   background-color: white;
@@ -110,3 +108,5 @@ const Title = styled.div`
   width: 100%;
   font-size: 30px;
 `;
+
+export default Question;
