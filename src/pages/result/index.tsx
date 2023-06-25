@@ -8,6 +8,7 @@ import { shareLink } from '@/utils/shareLink';
 import Button from '@/components/button';
 import { pageContainer } from '@/style/mixin';
 import useQueryString from '@/hooks/useQueryString';
+import { shadow } from '@/style/variables/color';
 
 export interface IResult {
   title: string;
@@ -68,6 +69,9 @@ const Result = () => {
 
 const Wrapper = styled.div`
   ${pageContainer}
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
+  padding-top: 10px;
 `;
 
 const Title = styled.span`
@@ -90,8 +94,10 @@ const Image = styled.img`
 `;
 
 const ButtonWrapper = styled.div`
-  max-width: 272px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ShareButton = styled(Button)`
