@@ -69,6 +69,7 @@ const Result = () => {
 
 const Wrapper = styled.div`
   ${pageContainer}
+
   box-shadow: ${shadow.box};
   border-radius: 20px;
   padding-top: 10px;

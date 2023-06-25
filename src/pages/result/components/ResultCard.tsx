@@ -83,7 +83,6 @@ const Center = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
 `;
 
 const Title = styled.h3`
@@ -98,7 +97,6 @@ const CardList = styled.div`
   width: ${WIDTH}px;
   gap: 24px;
   font-size: 0.8rem;
-  height: auto;
   margin: 0;
   padding: 0;
   text-align: center;
