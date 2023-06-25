@@ -11,9 +11,9 @@ import {
 } from './constants';
 
 const SubCategory = () => {
-  const [selectedStep1Option, setSelectedStep1Option] = useState(0);
-  const [selectedStep2Option, setSelectedStep2Option] = useState(0);
-  const [selectedStep3Option, setSelectedStep3Option] = useState(0);
+  const [selectedStep1Option, setSelectedStep1Option] = useState(-1);
+  const [selectedStep2Option, setSelectedStep2Option] = useState(-1);
+  const [selectedStep3Option, setSelectedStep3Option] = useState(-1);
 
   const handleOptionClick = (option: number, index: number) => {
     if (index === 1) setSelectedStep1Option(option);
@@ -37,14 +37,14 @@ const SubCategory = () => {
           <StepTitle>{SUB_CATEGORY_STEP_1.title}</StepTitle>
           <Option>
             <OptionBox
-              onClick={() => handleOptionClick(1, 1)}
-              selected={selectedStep1Option === 1}
+              onClick={() => handleOptionClick(0, 1)}
+              selected={selectedStep1Option === 0}
             >
               {SUB_CATEGORY_STEP_1.option.inside}
             </OptionBox>
             <OptionBox
-              onClick={() => handleOptionClick(2, 1)}
-              selected={selectedStep1Option === 2}
+              onClick={() => handleOptionClick(1, 1)}
+              selected={selectedStep1Option === 1}
             >
               {SUB_CATEGORY_STEP_1.option.outside}
             </OptionBox>
@@ -54,20 +54,20 @@ const SubCategory = () => {
           <StepTitle>{SUB_CATEGORY_STEP_2.title}</StepTitle>
           <Option>
             <OptionBox
-              onClick={() => handleOptionClick(1, 2)}
-              selected={selectedStep2Option === 1}
+              onClick={() => handleOptionClick(0, 2)}
+              selected={selectedStep2Option === 0}
             >
               {SUB_CATEGORY_STEP_2.option.easy}
             </OptionBox>
             <OptionBox
-              onClick={() => handleOptionClick(2, 2)}
-              selected={selectedStep2Option === 2}
+              onClick={() => handleOptionClick(1, 2)}
+              selected={selectedStep2Option === 1}
             >
               {SUB_CATEGORY_STEP_2.option.normal}
             </OptionBox>
             <OptionBox
-              onClick={() => handleOptionClick(3, 2)}
-              selected={selectedStep2Option === 3}
+              onClick={() => handleOptionClick(2, 2)}
+              selected={selectedStep2Option === 2}
             >
               {SUB_CATEGORY_STEP_2.option.hard}
             </OptionBox>
@@ -77,20 +77,20 @@ const SubCategory = () => {
           <StepTitle>{SUB_CATEGORY_STEP_3.title}</StepTitle>
           <Option>
             <OptionBox
-              onClick={() => handleOptionClick(1, 3)}
-              selected={selectedStep3Option === 1}
+              onClick={() => handleOptionClick(0, 3)}
+              selected={selectedStep3Option === 0}
             >
               {SUB_CATEGORY_STEP_3.option.expensive}
             </OptionBox>
             <OptionBox
-              onClick={() => handleOptionClick(2, 3)}
-              selected={selectedStep3Option === 2}
+              onClick={() => handleOptionClick(1, 3)}
+              selected={selectedStep3Option === 1}
             >
               {SUB_CATEGORY_STEP_3.option.middle}
             </OptionBox>
             <OptionBox
-              onClick={() => handleOptionClick(3, 3)}
-              selected={selectedStep3Option === 3}
+              onClick={() => handleOptionClick(2, 3)}
+              selected={selectedStep3Option === 2}
             >
               {SUB_CATEGORY_STEP_3.option.cheap}
             </OptionBox>
