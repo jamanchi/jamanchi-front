@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { colors } from '../../style/variables/color/index';
 import Navigation from '@/components/Navigation';
 import {
@@ -21,14 +21,12 @@ const SubCategory = () => {
     if (index === 3) setSelectedStep3Option(option);
   };
 
-  const location = useLocation();
-  const mainCategoryId = location.state.id;
+  const { id } = useParams();
   const navigate = useNavigate();
   const previousBtn = () => navigate('/question');
   const getResult = async () => {
-    const id = `${mainCategoryId}${selectedStep1Option}${selectedStep2Option}${selectedStep3Option}`;
-    const response = await fetch(`/api/v1/questionResult/${id}`);
-    const data = await response.json();
+    const ids = `${id}${selectedStep1Option}${selectedStep2Option}${selectedStep3Option}`;
+    navigate(`/question/step2/${ids}`);
   };
 
   return (
@@ -126,7 +124,8 @@ const Step = styled.div`
   width: 100%;
 `;
 const StepTitle = styled.span`
-  font-size: 30px;
+  font-size: 26px;
+  color: ${colors.primary};
 `;
 
 const Option = styled.div`
