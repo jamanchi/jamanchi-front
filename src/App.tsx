@@ -2,14 +2,14 @@ import { Global } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useQueryErrorResetBoundary } from 'react-query';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { layoutContainer } from '@/style/mixin';
 import reset from './style/reset';
 import ErrorFallback from '@/components/ErrorFallback';
 
 const App = () => {
   const { reset: errorReset } = useQueryErrorResetBoundary();
-
+  throw Error('dd');
   return (
     <ErrorBoundary
       onReset={errorReset}

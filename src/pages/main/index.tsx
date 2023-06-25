@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Button from 'src/components/button';
+import Button from '@/components/button';
 import backgroundImage from '@/assets/images/backgroundImage.png';
 import { colors } from '@/style/variables';
 import {
