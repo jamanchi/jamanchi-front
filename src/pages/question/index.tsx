@@ -1,0 +1,112 @@
+import { useNavigate } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
+import Navigation from '@/components/Navigation';
+import { colors } from '../../style/variables/color/index';
+import { MAIN_CATEGORY_TITLE } from './constants';
+
+type Datas = Data[];
+
+interface Data {
+  id: number;
+  name: string;
+  iconSrc: string;
+}
+
+function Question() {
+  const [datas, setData] = useState<Datas>();
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch(`/api/v1/maincategory/list`);
+      const categoryList = await response?.json();
+      setData(categoryList);
+    };
+
+    getData();
+  }, []);
+
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <Navigation />
+      <Wrapper>
+        <Title>
+          <span>{MAIN_CATEGORY_TITLE.FIRST}</span>
+          <span>{MAIN_CATEGORY_TITLE.SECOND}</span>
+        </Title>
+        <Grid>
+          {datas?.map((data: Data) => (
+            <Category
+              key={data.id}
+              onClick={
+                data.id === 0
+                  ? () => navigate('step1', { state: { id: data.id } })
+                  : undefined
+              }
+            >
+              <img
+                width="40"
+                height="43"
+                src={`${data.iconSrc}`}
+                alt={`${data.id}`}
+              />
+              <span>{data.name}</span>
+            </Category>
+          ))}
+        </Grid>
+      </Wrapper>
+    </>
+  );
+}
+
+export default Question;
+
+const Wrapper = styled.div`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+`;
+
+const Category = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  & span {
+    padding-top: 5px;
+  }
+  &:hover {
+    background-color: ${colors.primary};
+    color: white;
+  }
+`;
+
+const Title = styled.div`
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 30px;
+`;
