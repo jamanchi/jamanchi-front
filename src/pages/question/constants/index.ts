@@ -30,3 +30,7 @@ export const SUB_CATEGORY_STEP_3 = Object.freeze({
 });
 
 export const SUB_CATEGORY_RESULT = '취미 추천 보기';
+
+export const HOBBYOPTIONS_CHOICE = '원하시는 취미를 선택하세요';
+
+export const LODING = '로딩중 입니다.';
