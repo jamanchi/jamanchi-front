@@ -32,7 +32,7 @@ const Result = () => {
     ).json();
     return data;
   };
-  const hobbyId = getParams('title') || '';
+  const hobbyId = getParams('id') || '';
   const keywords = getParams('keywords')?.split(',') || [];
   const { data: resultData } = useQuery<IResult>(['resultData'], () =>
     getResult(hobbyId, keywords)
