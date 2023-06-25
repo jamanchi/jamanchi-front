@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
+import Button from 'src/components/button';
 import backgroundImage from '@/assets/images/backgroundImage.png';
-import { colors, font } from '@/style/variables';
-import Button from '@/components/Button/Button';
+import { colors } from '@/style/variables';
 import {
   HOBBY_LIST_BUTTON_TEXT,
   NEW_HOBBY_BUTTON_TEXT,
   SUB_TITLE_TEXT,
 } from '@/pages/main/constants';
+import { pageContainer, font } from '@/style/mixin';
 
 const Main = () => (
   <Container>
@@ -30,11 +31,8 @@ const Main = () => (
 );
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${pageContainer};
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
   padding: 70px 30px 55px;
   background-image: url(${backgroundImage});
   border: 1px solid ${colors.gray};
