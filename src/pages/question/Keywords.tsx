@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { colors } from '@/style/variables';
+import { KEYWORDS } from './constants';
 
 const keywordsSet = new Set();
 
@@ -16,14 +17,15 @@ const Keywords = () => {
 
   const [selectedKeywords, setSelectedKeywords] = useState();
 
-  const run = (_, keyword: string) => {
-    if (keywordsSet.has(keyword)) {
-      keywordsSet.delete(keyword);
+  const run = (_, keywordId: number) => {
+    if (keywordsSet.has(keywordId)) {
+      keywordsSet.delete(keywordId);
       setSelectedKeywords(new Set(keywordsSet));
       return;
     }
+    console.log(selectedKeywords);
     if (keywordsSet.size === 2) return;
-    keywordsSet.add(keyword);
+    keywordsSet.add(keywordId);
     setSelectedKeywords(new Set(keywordsSet));
   };
 
@@ -35,26 +37,12 @@ const Keywords = () => {
       const goToPosts = () =>
         navigate({
           pathname: '/result',
-          search: `?id=${id}&keywords=${first.replace(
-            /\s/g,
-            ''
-          )},${second.replace(/\s/g, '')}`,
+          search: `?id=${id}&keywords=${first},${second}`,
         });
       keywordsSet.clear();
       goToPosts();
     }
   };
-
-  const keywords = [
-    '간단 설명',
-    '필수 물품',
-    '비슷한 취미',
-    '액세서리 및 부속품',
-    '서적과 자료',
-    '특정 브랜드와 제품',
-    '기술과 기법',
-    '유명 선수',
-  ];
 
   return (
     <>
@@ -63,17 +51,19 @@ const Keywords = () => {
         <Title>원하는 키워드를 골라주세요</Title>
 
         <Grid>
-          {keywords?.map((keyword, index) => (
+          {KEYWORDS?.map((object, index) => (
             <KeywordBox
               key={index}
               style={{
-                backgroundColor: keywordsSet.has(keyword) ? colors.primary : '',
-                color: keywordsSet.has(keyword) ? colors.secondary : '',
-                fontWeight: keywordsSet.has(keyword) ? '700' : '400',
+                backgroundColor: keywordsSet.has(object.id)
+                  ? colors.primary
+                  : '',
+                color: keywordsSet.has(object.id) ? colors.secondary : '',
+                fontWeight: keywordsSet.has(object.id) ? '700' : '400',
               }}
-              onClick={(_) => run(_, keyword)}
+              onClick={(_) => run(_, object.id)}
             >
-              {keyword}
+              {object.keyword}
             </KeywordBox>
           ))}
         </Grid>
