@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Navigation from '@/components/Navigation';
-import { colors } from '../../style/variables/color/index';
+import { colors, shadow } from '../../style/variables/color/index';
 import { MAIN_CATEGORY_DATA, MAIN_CATEGORY_TITLE } from './constants';
+import { pageContainer } from '@/style/mixin';
 
 interface Data {
   id: number;
@@ -14,54 +15,49 @@ const Question = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <Wrapper>
       <Navigation
         leftOnClick={() => {
           navigate('/');
         }}
       />
-      <Wrapper>
-        <Title>
-          <span>{MAIN_CATEGORY_TITLE.FIRST}</span>
-          <span>{MAIN_CATEGORY_TITLE.SECOND}</span>
-        </Title>
+      <Title>
+        <span>{MAIN_CATEGORY_TITLE.FIRST}</span>
+        <span>{MAIN_CATEGORY_TITLE.SECOND}</span>
+      </Title>
 
-        <Grid>
-          {MAIN_CATEGORY_DATA?.map((data: Data) => (
-            <Category
-              key={data.id}
-              onClick={
-                data.id === 1 ? () => navigate(`step1/${data.id}`) : undefined
-              }
-            >
-              <img
-                width="49"
-                height="49"
-                src={`${data.iconSrc}`}
-                alt={`${data.id}`}
-              />
-              <span>{data.name}</span>
-            </Category>
-          ))}
-        </Grid>
-      </Wrapper>
-    </>
+      <Grid>
+        {MAIN_CATEGORY_DATA?.map((data: Data) => (
+          <Category
+            key={data.id}
+            style={{ cursor: data.id === 1 ? 'pointer' : '' }}
+            onClick={
+              data.id === 1 ? () => navigate(`step1/${data.id}`) : undefined
+            }
+          >
+            <img
+              width="49"
+              height="49"
+              src={`${data.iconSrc}`}
+              alt={`${data.id}`}
+            />
+            <span>{data.name}</span>
+          </Category>
+        ))}
+      </Grid>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  ${pageContainer};
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-top: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+  box-shadow: ${shadow.box};
   box-sizing: border-box;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-radius: 20px;
 `;
 
 const Grid = styled.div`
@@ -88,12 +84,13 @@ const Category = styled.div`
 `;
 
 const Title = styled.div`
+  margin-top: 15px;
   padding-bottom: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+
   font-size: 30px;
 `;
 

@@ -44,6 +44,7 @@ module.exports = {
     'no-undef': 'off',
     'no-shadow': 'off',
     'consistent-return': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   settings: {
     'import/resolver': {

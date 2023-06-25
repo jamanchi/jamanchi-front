@@ -9,6 +9,7 @@ import {
   SUB_TITLE_TEXT,
 } from '@/pages/main/constants';
 import { pageContainer, font } from '@/style/mixin';
+import { shadow } from '@/style/variables/color';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -47,7 +48,8 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 70px 30px 55px;
   background-image: url(${backgroundImage});
-  border: 1px solid ${colors.gray};
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
 `;
 
 const ButtonGroup = styled.div`

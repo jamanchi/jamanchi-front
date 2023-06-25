@@ -5,6 +5,7 @@ import { pageContainer } from '@/style/mixin';
 import { colors } from '@/style/variables';
 import Card from '@/components/Card';
 import snowBoard from '@/assets/images/snowBoard.jpg';
+import { shadow } from '@/style/variables/color';
 
 const SimilarHobbies = () => {
   const navigate = useNavigate();
@@ -54,10 +55,15 @@ const SimilarHobbies = () => {
 
 const Wrapper = styled.div`
   ${pageContainer}
-  align-items: center;
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
+  padding-top: 10px;
 `;
 
-const Title = styled.span`
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   color: ${colors.primary};
   font-size: 2rem;
@@ -67,19 +73,18 @@ const Title = styled.span`
 `;
 
 const HobbyWrapper = styled.div`
-  width: 100%;
-  height: 100%;
   overflow-y: scroll;
   padding: 0px 28px;
   display: flex;
   flex-direction: column;
   margin-top: 16px;
-  gap: 16px;
+  gap: 15px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SimilarHobby = styled(Card)`
-  width: 100%;
-  min-height: 100px;
   padding: 16px;
   display: flex;
   flex-direction: row;
