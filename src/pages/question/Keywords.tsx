@@ -8,7 +8,10 @@ const keywordsSet = new Set();
 
 const Keywords = () => {
   const navigate = useNavigate();
-  const previousBtn = () => navigate(-1);
+  const previousBtn = () => {
+    keywordsSet.clear();
+    navigate(-1);
+  };
   const { id } = useParams();
 
   const [selectedKeywords, setSelectedKeywords] = useState();
@@ -37,6 +40,7 @@ const Keywords = () => {
             ''
           )},${second.replace(/\s/g, '')}`,
         });
+      keywordsSet.clear();
       goToPosts();
     }
   };
