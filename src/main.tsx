@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Question from './pages/question';
 import MainCategory from './pages/question/SubCategory';
+import Main from '@/pages/main';
 
 (async () => {
   if (import.meta.env.DEV) {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/',
+        element: <Main />,
+      },
       {
         path: 'question',
         element: <Question />,

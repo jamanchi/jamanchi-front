@@ -1,4 +1,4 @@
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
 
 const reset = css`
   /* http://meyerweb.com/eric/tools/css/reset/ 
