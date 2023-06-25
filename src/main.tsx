@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
+import Question from './pages/question';
+import MainCategory from './pages/question/SubCategory';
 
 (async () => {
   if (import.meta.env.DEV) {
@@ -14,6 +16,16 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    children: [
+      {
+        path: 'question',
+        element: <Question />,
+      },
+      {
+        path: 'question/step1',
+        element: <MainCategory />,
+      },
+    ],
   },
 ]);
 
