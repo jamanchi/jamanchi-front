@@ -9,6 +9,7 @@ import Main from '@/pages/main';
 import HobbyOptions from './pages/question/HobbyOptions';
 import Keywords from './pages/question/Keywords';
 import Result from '@/pages/result';
+import Hobby from '@/pages/hobby';
 
 (async () => {
   if (import.meta.env.DEV) {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Main />,
       },
+      { path: '/hobby/list', element: <Hobby /> },
       {
         path: 'question',
         element: <Question />,
