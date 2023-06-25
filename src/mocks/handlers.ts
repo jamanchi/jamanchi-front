@@ -103,6 +103,14 @@ export const handlers = [
     )
   ),
 
+  rest.get('/api/v1/summary', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        totalCount: count,
+      })
+    )
+  ),
   // 소분류에 따른 취미 5개 요청
   rest.get('/api/v1/questionResult/0111', (_, res, ctx) =>
     res(
@@ -115,6 +123,28 @@ export const handlers = [
           { hobby: '우주 유영', id: 4 },
           { hobby: '아이스하키', id: 5 },
         ],
+      })
+    )
+  ),
+  // 취미 리스트 요청
+  rest.get('/api/v1/hobbies/sub', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        contents: [
+          { name: '공', description: ['#test', '#test', '#test'] },
+          { name: '야구', description: ['#test', '#test', '#test'] },
+          { name: '스위스', description: ['#test', '#test', '#test'] },
+          { name: '배드민턴', description: ['#test', '#test', '#test'] },
+          { name: '스노우보드', description: ['#test', '#test', '#test'] },
+          { name: '스케이트보드', description: ['#test', '#test', '#test'] },
+          { name: '인라인스케이트', description: ['#test', '#test', '#test'] },
+          {
+            name: '명가찰떡파이키위',
+            description: ['#test', '#test', '#test'],
+          },
+        ],
+        last: true,
       })
     )
   ),

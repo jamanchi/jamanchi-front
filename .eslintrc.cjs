@@ -38,6 +38,12 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
     'react/no-unstable-nested-components': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'no-return-await': 'off',
+    'no-undef': 'off',
+    'no-shadow': 'off',
+    'consistent-return': 'off',
   },
   settings: {
     'import/resolver': {

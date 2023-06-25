@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
 import { colors } from '@/style/variables';
 import { HEIGHT } from './constant';
-import Ripple from './components/Ripple';
+import Ripple from '../Ripple';
 
 interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   color?: 'primary' | 'secondary';
