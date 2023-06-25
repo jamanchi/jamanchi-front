@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App';
+import Question from './pages/question';
+import SubCategory from './pages/question/SubCategory';
 import Main from '@/pages/main';
+import HobbyOptions from './pages/question/HobbyOptions';
+import Keywords from './pages/question/Keywords';
 import Result from '@/pages/result';
 
 (async () => {
@@ -21,6 +25,22 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Main />,
+      },
+      {
+        path: 'question',
+        element: <Question />,
+      },
+      {
+        path: 'question/step1/:id',
+        element: <SubCategory />,
+      },
+      {
+        path: 'question/step2/:id',
+        element: <HobbyOptions />,
+      },
+      {
+        path: 'question/step3/:id',
+        element: <Keywords />,
       },
       {
         path: 'result',

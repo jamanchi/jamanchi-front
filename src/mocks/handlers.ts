@@ -48,4 +48,74 @@ export const handlers = [
     count += 1;
     return res(ctx.status(200));
   }),
+
+  // MainCategory 가져오기
+  rest.get('/api/v1/maincategory/list', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json([
+        {
+          id: 0,
+          name: '스포츠',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/journey.png',
+        },
+        {
+          id: 1,
+          name: '창작',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/steering-wheel.png',
+        },
+        {
+          id: 2,
+          name: '요리',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/cab-stand.png',
+        },
+        {
+          id: 3,
+          name: '음악',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/us-capitol.png',
+        },
+        {
+          id: 4,
+          name: '수집',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/taxi.png',
+        },
+        {
+          id: 5,
+          name: '독서',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/bus.png',
+        },
+        {
+          id: 6,
+          name: '여행',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/adventure.png',
+        },
+        {
+          id: 7,
+          name: '식물 관리',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/visit.png',
+        },
+        {
+          id: 8,
+          name: '수상 활동',
+          iconSrc: 'https://img.icons8.com/3d-fluency/94/car.png',
+        },
+      ])
+    )
+  ),
+
+  // 소분류에 따른 취미 5개 요청
+  rest.get('/api/v1/questionResult/0111', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        hobbies: [
+          { hobby: '이종격투기', id: 1 },
+          { hobby: '양궁', id: 2 },
+          { hobby: '요트', id: 3 },
+          { hobby: '우주 유영', id: 4 },
+          { hobby: '아이스하키', id: 5 },
+        ],
+      })
+    )
+  ),
 ];
