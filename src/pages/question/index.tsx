@@ -3,9 +3,7 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import Navigation from '@/components/Navigation';
 import { colors } from '../../style/variables/color/index';
-import { MAIN_CATEGORY_TITLE } from './constants';
-
-type Datas = Data[];
+import { MAIN_CATEGORY_DATA, MAIN_CATEGORY_TITLE } from './constants';
 
 interface Data {
   id: number;
@@ -14,25 +12,7 @@ interface Data {
 }
 
 const Question = () => {
-  const fetchData = async () => {
-    const response = await fetch(`/api/v1/maincategory/list`);
-    const categoryList = await response?.json();
-    return categoryList;
-  };
-
-  const { isLoading, isError, data, error } = useQuery<Datas>(
-    ['datas'],
-    fetchData,
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-
   const navigate = useNavigate();
-
-  if (isError) {
-    throw error;
-  }
 
   return (
     <>
@@ -46,28 +26,25 @@ const Question = () => {
           <span>{MAIN_CATEGORY_TITLE.FIRST}</span>
           <span>{MAIN_CATEGORY_TITLE.SECOND}</span>
         </Title>
-        {isLoading ? (
-          <span>로딩중</span>
-        ) : (
-          <Grid>
-            {data?.map((data: Data) => (
-              <Category
-                key={data.id}
-                onClick={
-                  data.id === 0 ? () => navigate(`step1/${data.id}`) : undefined
-                }
-              >
-                <img
-                  width="40"
-                  height="43"
-                  src={`${data.iconSrc}`}
-                  alt={`${data.id}`}
-                />
-                <span>{data.name}</span>
-              </Category>
-            ))}
-          </Grid>
-        )}
+
+        <Grid>
+          {MAIN_CATEGORY_DATA?.map((data: Data) => (
+            <Category
+              key={data.id}
+              onClick={
+                data.id === 0 ? () => navigate(`step1/${data.id}`) : undefined
+              }
+            >
+              <img
+                width="49"
+                height="49"
+                src={`${data.iconSrc}`}
+                alt={`${data.id}`}
+              />
+              <span>{data.name}</span>
+            </Category>
+          ))}
+        </Grid>
       </Wrapper>
     </>
   );
