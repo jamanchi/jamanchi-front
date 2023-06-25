@@ -67,15 +67,13 @@ const ResultCard = ({ resultData }: IProps) => {
           ))}
       </CardList>
       <Pagination>
-        {Array(3)
-          .fill(null)
-          .map((_, i) => (
-            <PaginationItem
-              key={i}
-              onClick={() => setCurrent(i)}
-              current={current === i}
-            />
-          ))}
+        {result.map((_, i) => (
+          <PaginationItem
+            key={i}
+            onClick={() => setCurrent(i)}
+            current={current === i}
+          />
+        ))}
       </Pagination>
     </Center>
   );
