@@ -24,10 +24,7 @@ interface IResultItem {
 const Result = () => {
   const { getParams } = useQueryString();
   const navigate = useNavigate();
-  const getResult = async () => {
-    const hobbyId = getParams('title');
-    const keywords = getParams('keywords')?.split(',');
-
+  const getResult = async (hobbyId: string, keywords: string[]) => {
     const data = await (
       await fetch(
         `/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
@@ -35,8 +32,11 @@ const Result = () => {
     ).json();
     return data;
   };
-
-  const { data: resultData } = useQuery<IResult>(['resultData'], getResult);
+  const hobbyId = getParams('title') || '';
+  const keywords = getParams('keywords')?.split(',') || [];
+  const { data: resultData } = useQuery<IResult>(['resultData'], () =>
+    getResult(hobbyId, keywords)
+  );
 
   return (
     <Wrapper>
