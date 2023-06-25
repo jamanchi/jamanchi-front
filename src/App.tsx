@@ -2,7 +2,7 @@ import { Global } from '@emotion/react';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { layout } from './style/variables';
-import reset from './style/reset';
+import reset from './style/reset/index';
 
 const App = () => (
   <Wrapper>
