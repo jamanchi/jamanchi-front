@@ -10,6 +10,7 @@ import HobbyOptions from './pages/question/HobbyOptions';
 import Keywords from './pages/question/Keywords';
 import Result from '@/pages/result';
 import Hobby from '@/pages/hobby';
+import SimilarHobbies from './pages/similarHobbies';
 
 (async () => {
   if (import.meta.env.DEV) {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: 'result',
         element: <Result />,
+      },
+      {
+        path: 'similarHobbies',
+        element: <SimilarHobbies />,
       },
     ],
   },
