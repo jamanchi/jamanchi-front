@@ -1,3 +1,13 @@
+import 독서 from '@/assets/icons/독서.png';
+import 수상 from '@/assets/icons/수상.png';
+import 수집 from '@/assets/icons/수집.png';
+import 식물 from '@/assets/icons/식물.png';
+import 여행 from '@/assets/icons/여행.png';
+import 요리 from '@/assets/icons/요리.png';
+import 운동 from '@/assets/icons/운동.png';
+import 음악 from '@/assets/icons/음악.png';
+import 창작 from '@/assets/icons/창작.png';
+
 export const MAIN_CATEGORY_TITLE = Object.freeze({
   FIRST: '관심있는 카테고리를',
   SECOND: '선택해 주세요',
@@ -74,46 +84,46 @@ export const MAIN_CATEGORY_DATA = [
   {
     id: 1,
     name: '스포츠',
-    iconSrc: 'src/assets/icons/운동.png',
+    iconSrc: 운동,
   },
   {
     id: 2,
     name: '창작',
-    iconSrc: 'src/assets/icons/창작.png',
+    iconSrc: 창작,
   },
   {
     id: 3,
     name: '요리',
-    iconSrc: 'src/assets/icons/요리.png',
+    iconSrc: 요리,
   },
   {
     id: 4,
     name: '음악',
-    iconSrc: 'src/assets/icons/음악.png',
+    iconSrc: 음악,
   },
   {
     id: 5,
     name: '수집',
-    iconSrc: 'src/assets/icons/수집.png',
+    iconSrc: 수집,
   },
   {
     id: 6,
     name: '독서',
-    iconSrc: 'src/assets/icons/독서.png',
+    iconSrc: 독서,
   },
   {
     id: 7,
     name: '여행',
-    iconSrc: 'src/assets/icons/여행.png',
+    iconSrc: 여행,
   },
   {
     id: 8,
     name: '식물 관리',
-    iconSrc: 'src/assets/icons/식물.png',
+    iconSrc: 식물,
   },
   {
     id: 9,
     name: '수상 활동',
-    iconSrc: 'src/assets/icons/수상.png',
+    iconSrc: 수상,
   },
 ];
