@@ -32,7 +32,7 @@ const StyledButton = styled.button<{
   width: 100%;
   height: ${HEIGHT}px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'MBJUA';
   src: url(${BMJUA}) format('woff');
   border: 0;
