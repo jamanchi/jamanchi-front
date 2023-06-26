@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
 import { colors } from '@/style/variables';
 import { HEIGHT } from './constant';
 import Ripple from '../Ripple';
+import BMJUA from '@/style/mixin/font/BMJUA_otf.otf';
 
 interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   color?: 'primary' | 'secondary';
@@ -31,6 +32,9 @@ const StyledButton = styled.button<{
   width: 100%;
   height: ${HEIGHT}px;
   font-weight: bold;
+  font-size: 20px;
+  font-family: 'MBJUA';
+  src: url(${BMJUA}) format('woff');
   border: 0;
   border-radius: 8px;
   background-color: ${(props) => colors[props.color as keyof typeof colors]};
