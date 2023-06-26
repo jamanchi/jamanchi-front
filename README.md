@@ -1,3 +1,13 @@
+# 🚀 자연스럽게 만나는 취미 생활 (자만취)
+
+<img width="994" alt="image" src="https://github.com/jamanchi/jamanchi-front/assets/76567238/e3e46c56-18a2-4aea-9b58-98d910d8d9d5">
+
+
+
+<br>
+<br>
+<br>
+
 ## 프로젝트 소개
 
 배포링크 : https://jamanchi.netlify.app/
@@ -14,12 +24,21 @@
 
 우리는 취미를 통해 일상의 스트레스를 해소하고 새로운 즐거움을 찾는 데 도움을 주고자 합니다. **자만취**는 여러분의 삶에 즐거움과 의미를 더할 것입니다. 우리의 서비스를 통해 여러분은 자신에게 맞는 취미를 찾아나갈 수 있으며, 그 안에서 일상의 행복을 느끼시길 희망합니다.
 
+<br>
+<br>
+<br>
+
 ## 팀원소개
 
 |                             디아                             |                             선                              |                             말티푸                             |                             머지                             |      레이크                                                      |
 | :------------------------------------------------------------: | :-------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |:------------------------------------------------------------: |
 | ![image](https://avatars.githubusercontent.com/u/76567238?v=4) | ![image](https://avatars.githubusercontent.com/u/46879319?v=4)  | ![image](https://avatars.githubusercontent.com/u/78013903?v=4) | ![image](https://avatars.githubusercontent.com/u/72206135?v=4) | ![image](https://avatars.githubusercontent.com/u/17325845?v=4) |
 | 프론트 <a href="https://github.com/Ryan-Dia">[ Ryan-Dia ] </a> | 백엔드 <a href="https://github.com/SBSun">[ SBSun ] </a> | 백엔드 <a href="https://github.com/maltepoo">[ maltepoo ]</a> |프론트 <a href="https://github.com/kimseongchan-kr">[ kimseongchan ]</a> | 프론트 <a href="https://github.com/tnghgks">[ HOSU ]</a>    |
+
+<br>
+<br>
+<br>
+
 
 ## 기술스택
 
@@ -28,6 +47,10 @@ Spring Boot, Spring Data JPA, QueryDSL, openAI, Google Clould Storage, Lombok, M
 
 **프론트 엔드**
 React, TypeScript , React-Query, @emotion , msw
+
+<br>
+<br>
+<br>
 
 ## 개발기간
 
