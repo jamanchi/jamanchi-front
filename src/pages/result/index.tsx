@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
@@ -9,7 +8,8 @@ import Button from '@/components/button';
 import { pageContainer } from '@/style/mixin';
 import useQueryString from '@/hooks/useQueryString';
 import { shadow } from '@/style/variables/color';
-import { PROXY } from '@/constants/proxyURL';
+import jamanchi from '@/assets/images/jamanchi.png';
+import useResultData from './hooks/useResultData';
 
 export interface IResult {
   title: string;
@@ -24,28 +24,20 @@ interface IResultItem {
 
 const Result = () => {
   const { getParams } = useQueryString();
-  const navigate = useNavigate();
-  const previousBtn = () => navigate(-1);
-  const getResult = async (hobbyId: string, keywords: string[]) => {
-    const data = await (
-      await fetch(
-        `${PROXY}/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
-      )
-    ).json();
-
-    return data;
-  };
   const hobbyId = getParams('id') || '';
   const keywords = getParams('keywords')?.split(',') || [];
-  const { data: resultData } = useQuery<IResult>(['resultData'], () =>
-    getResult(hobbyId, keywords)
-  );
+  const [resultData, hobby] = useResultData(hobbyId, keywords);
+  const navigate = useNavigate();
+  const previousBtn = () => navigate(-1);
 
   return (
     <Wrapper>
       <Navigation leftOnClick={previousBtn} />
       <Title>{resultData?.title}</Title>
-      <Image src={resultData?.image} alt={`${resultData?.title} 이미지`} />
+      <Image
+        src={hobby.image ?? jamanchi}
+        alt={`${resultData?.title} 이미지`}
+      />
       {resultData && <ResultCard resultData={resultData} />}
       <ButtonWrapper>
         <ShareButton
@@ -88,7 +80,7 @@ const Title = styled.span`
 const Image = styled.img`
   display: block;
   background-color: ${colors.gray};
-  max-width: 272px;
+  width: 272px;
   height: 209px;
   border-radius: 20px;
   margin: 20px auto;
