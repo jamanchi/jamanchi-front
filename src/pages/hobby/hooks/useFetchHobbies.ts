@@ -1,12 +1,15 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { LIST_SIZE } from '../constants';
 
-const fetchHobbies = async () =>
-  await (await fetch(`/api/v1/hobbies/sub`)).json();
+const fetchHobbies = async (pageParam: string) =>
+  await (
+    await fetch(`/api/v1/hobbies/sub?page=${pageParam}&size=${LIST_SIZE}`)
+  ).json();
 
 const useFetchHobbies = () =>
   useInfiniteQuery({
     queryKey: ['hobbies'],
-    queryFn: fetchHobbies,
+    queryFn: ({ pageParam = 1 }) => fetchHobbies(pageParam),
     getNextPageParam: (_, allPages) => allPages.length + 1,
   });
 

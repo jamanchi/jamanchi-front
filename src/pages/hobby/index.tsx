@@ -44,7 +44,7 @@ const Hobby = () => {
           {hobbies.map((data) => (
             <CardContainer
               onClick={() => {
-                navigate('/question/step3/1');
+                navigate(`/question/step3/${data.id}`);
               }}
             >
               <CardMedia src={demo} alt={data.name} />
@@ -52,7 +52,7 @@ const Hobby = () => {
               <Ripple duration={700} color="#ffffff" />
             </CardContainer>
           ))}
-          <div ref={ref}>test</div>
+          <div ref={ref} />
         </List>
       </ContentContainer>
     </Container>
@@ -112,6 +112,8 @@ const CardContent = styled.div<{ text: string }>`
   color: ${colors.white};
   font-size: ${(props) => (props.text.length % 3 === 1 ? 20 : 25)}px;
   font-weight: 900;
+  font-size: 1.2rem;
+  white-space: nowrap;
   text-align: center;
 `;
 
