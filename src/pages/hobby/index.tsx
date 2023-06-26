@@ -5,7 +5,6 @@ import { pageContainer } from '@/style/mixin';
 import Navigation from '@/components/Navigation';
 import Card from '@/components/Card';
 import { colors } from '@/style/variables';
-import demo from '@/assets/images/demo.png';
 import Ripple from '@/components/Ripple';
 import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
 import useIntersect from '@/pages/hobby/hooks/useIntersect';
@@ -49,7 +48,7 @@ const Hobby = () => {
                 navigate(`/question/step3/${data.id}`);
               }}
             >
-              <CardMedia src={demo} alt={data.name} />
+              <CardMedia src={data.image} alt={data.name} />
               <CardContent text={data.name}>{data.name}</CardContent>
               <Ripple duration={700} color="#ffffff" />
             </CardContainer>
