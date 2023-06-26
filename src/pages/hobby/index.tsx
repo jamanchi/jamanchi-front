@@ -54,7 +54,7 @@ const Hobby = () => {
               <Ripple duration={700} color="#ffffff" />
             </CardContainer>
           ))}
-          <div ref={ref} />
+          <TargetContainer ref={ref} />
         </List>
       </ContentContainer>
     </Container>
@@ -79,6 +79,10 @@ const ContentContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const TargetContainer = styled.div`
+  height: 10px;
 `;
 
 const List = styled.div`
