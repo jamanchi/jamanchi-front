@@ -9,6 +9,7 @@ import Button from '@/components/button';
 import { pageContainer } from '@/style/mixin';
 import useQueryString from '@/hooks/useQueryString';
 import { shadow } from '@/style/variables/color';
+import { PROXY } from '@/constants/proxyURL';
 
 export interface IResult {
   title: string;
@@ -28,7 +29,7 @@ const Result = () => {
   const getResult = async (hobbyId: string, keywords: string[]) => {
     const data = await (
       await fetch(
-        `/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
+        `${PROXY}/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
       )
     ).json();
 

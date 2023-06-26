@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation';
 import { colors, shadow } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';
 import { pageContainer } from '@/style/mixin';
+import { PROXY } from '@/constants/proxyURL';
 
 interface Hobby {
   name: string;
@@ -19,7 +20,7 @@ const HobbyOptions = () => {
   const { id } = useParams();
 
   const fetchData = async () => {
-    const response = await fetch(`/api/v1/hobbies/recommend/${id}`);
+    const response = await fetch(`${PROXY}/api/v1/hobbies/recommend/${id}`);
     const categoryList = await response?.json();
     return categoryList;
   };

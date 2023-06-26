@@ -1,9 +1,12 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { LIST_SIZE } from '../constants';
+import { PROXY } from '@/constants/proxyURL';
 
 const fetchHobbies = async (pageParam: string) =>
   await (
-    await fetch(`/api/v1/hobbies/sub?page=${pageParam}&size=${LIST_SIZE}`)
+    await fetch(
+      `${PROXY}/api/v1/hobbies/sub?page=${pageParam}&size=${LIST_SIZE}`
+    )
   ).json();
 
 const useFetchHobbies = () =>
