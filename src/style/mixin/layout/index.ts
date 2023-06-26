@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import '../font/font.css';
 
 export const layoutContainer = css`
   margin: 0 auto;
@@ -15,6 +16,7 @@ export const pageContainer = css`
   flex-direction: column;
   width: 400px;
   height: 790px;
+  font-family: 'MBJUA';
   & > div {
     margin-left: 20px;
     margin-right: 20px;

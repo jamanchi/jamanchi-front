@@ -90,7 +90,7 @@ const Title = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  color: ${colors.primary};
   font-size: 30px;
 `;
 
