@@ -10,6 +10,7 @@ import Ripple from '@/components/Ripple';
 import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
 import useIntersect from '@/pages/hobby/hooks/useIntersect';
 import { shadow } from '@/style/variables/color';
+import Loader from '@/components/Loader';
 
 const Hobby = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const Hobby = () => {
         }}
       />
       <ContentContainer>
+        {isFetching && <Loader />}
         <List>
           {hobbies.map((data) => (
             <CardContainer
