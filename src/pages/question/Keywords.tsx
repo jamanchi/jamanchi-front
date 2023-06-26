@@ -164,7 +164,7 @@ const ResultBtn = styled.div`
 
 const Tem = styled.div`
   position: absolute;
-  bottom: 205px;
+  bottom: 235px;
   right: 830px;
   display: flex;
   justify-content: center;
