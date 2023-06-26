@@ -10,6 +10,7 @@ import useFetchHobbies from '@/pages/hobby/hooks/useFetchHobbies';
 import useIntersect from '@/pages/hobby/hooks/useIntersect';
 import { shadow } from '@/style/variables/color';
 import Loader from '@/components/Loader';
+import logo from '@/assets/icon_beach.png';
 
 const Hobby = () => {
   const navigate = useNavigate();
@@ -48,7 +49,11 @@ const Hobby = () => {
                 navigate(`/question/step3/${data.id}`);
               }}
             >
-              <CardMedia src={data.image} alt={data.name} />
+              <CardMedia
+                isShowImage={!!data.image}
+                src={data.image || logo}
+                alt={data.name}
+              />
               <CardContent text={data.name}>{data.name}</CardContent>
               <Ripple duration={700} color="#ffffff" />
             </CardContainer>
@@ -103,10 +108,13 @@ const CardContainer = styled(Card)`
   }
 `;
 
-const CardMedia = styled.img`
+const CardMedia = styled.img<{ isShowImage: boolean }>`
   height: 100%;
+  width: 100%;
   border-radius: 20px;
   filter: brightness(80%);
+  object-fit: ${(props) => (props.isShowImage ? 'fill' : 'none')};
+  background-color: ${colors.gray};
 `;
 
 const CardContent = styled.div<{ text: string }>`
