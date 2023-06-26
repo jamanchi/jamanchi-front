@@ -4,9 +4,11 @@ import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { layoutContainer } from '@/style/mixin';
+import { layoutContainer, pageContainer } from '@/style/mixin';
 import reset from './style/reset';
 import ErrorFallback from '@/components/ErrorFallback';
+import Loader from './components/Loader';
+import { shadow } from './style/variables/color';
 
 const App = () => {
   const { reset: errorReset } = useQueryErrorResetBoundary();
@@ -20,7 +22,13 @@ const App = () => {
     >
       <Wrapper>
         <Global styles={reset} />
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense
+          fallback={
+            <LoaderWrapper>
+              <Loader />
+            </LoaderWrapper>
+          }
+        >
           <Outlet />
         </Suspense>
       </Wrapper>
@@ -31,5 +39,10 @@ const App = () => {
 const Wrapper = styled.main`
   ${layoutContainer}
 `;
-
+const LoaderWrapper = styled.div`
+  ${pageContainer}
+  box-shadow: ${shadow.box};
+  border-radius: 20px;
+  padding-top: 20px;
+`;
 export default App;
