@@ -1,1 +1,1 @@
-export const LIST_SIZE = 8;
+export const LIST_SIZE = 20;
