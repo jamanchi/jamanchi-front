@@ -18,6 +18,7 @@ const Keywords = () => {
   const { id } = useParams();
 
   const [selectedKeywords, setSelectedKeywords] = useState<Set<number>>();
+  const [tmp, setTmp] = useState<boolean>(true);
 
   const run = (_: MouseEvent, keywordId: number) => {
     if (keywordsSet.has(keywordId)) {
@@ -35,10 +36,8 @@ const Keywords = () => {
     if (keywordsSet.size === 0) return;
     const [first, second] = [...selectedKeywords!];
     if (keywordsSet.size === 1) {
-      navigate({
-        pathname: '/result',
-        search: `?id=${id}&keywords=${first}`,
-      });
+      setTmp(false);
+      return;
     }
     if (keywordsSet.size === 2) {
       navigate({
@@ -72,6 +71,14 @@ const Keywords = () => {
       <Limit>
         <span>최대 2개까지 선택가능</span>
       </Limit>
+      {tmp ? (
+        ''
+      ) : (
+        <Tem>
+          <span>점검중 : 2개 모두 선택해 주세요</span>
+        </Tem>
+      )}
+
       <ResultBtn onClick={handleResultBtn}>결과 보기</ResultBtn>
     </Wrapper>
   );
@@ -152,6 +159,23 @@ const ResultBtn = styled.div`
   &:hover {
     background-color: ${colors.secondary};
     color: black;
+  }
+`;
+
+const Tem = styled.div`
+  position: absolute;
+  bottom: 205px;
+  right: 830px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    background-color: red;
+    color: ${colors.secondary};
+    font-weight: 600;
+    padding: 3px 17px 3px 17px;
+    border-radius: 10px;
   }
 `;
 
