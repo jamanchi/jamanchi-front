@@ -3,6 +3,17 @@ import { rest } from 'msw';
 let count = 0;
 
 export const handlers = [
+  rest.get('/api/v1/hobbies/:id', (_, res, ctx) =>
+    res(
+      ctx.json({
+        id: 125,
+        name: '테니스',
+        image:
+          'https://storage.googleapis.com/jamanchi_bucket/1d04dc82-c5e7-4933-98b3-741b316a4539',
+      })
+    )
+  ),
+
   // 답변결과조회
   rest.get('/api/v1/answer', (req, res, ctx) => {
     const hobbyId = req.url.searchParams.get('hobbyId');
@@ -10,6 +21,7 @@ export const handlers = [
     const keywordId2 = req.url.searchParams.get('keywordId2');
     if (hobbyId && keywordId1 && keywordId2) {
       return res(
+        ctx.delay(2000),
         ctx.status(200),
         ctx.json({
           id: hobbyId,
@@ -58,23 +70,48 @@ export const handlers = [
     )
   ),
   // 소분류에 따른 취미 5개 요청
-  rest.get('/api/v1/questionResult/0-111', (_, res, ctx) =>
+  rest.get('/api/v1/hobbies/recommend/:id', (_, res, ctx) =>
     res(
+      ctx.delay(2000),
       ctx.status(200),
-      ctx.json({
-        hobbies: [
-          { hobby: '이종격투기', id: 1 },
-          { hobby: '양궁', id: 2 },
-          { hobby: '요트', id: 3 },
-          { hobby: '우주 유영', id: 4 },
-          { hobby: '아이스하키', id: 5 },
-        ],
-      })
+      ctx.json([
+        {
+          id: 188,
+          name: '수영',
+          image:
+            'https://storage.googleapis.com/jamanchi_bucket/726a4901-6abf-4b56-ba06-13b7154af020',
+        },
+        {
+          id: 189,
+          name: '자전거타기',
+          image:
+            'https://storage.googleapis.com/jamanchi_bucket/61dbd6db-8f74-47fb-989f-37bcdee52d08',
+        },
+        {
+          id: 190,
+          name: '테니스',
+          image:
+            'https://storage.googleapis.com/jamanchi_bucket/1d04dc82-c5e7-4933-98b3-741b316a4539',
+        },
+        {
+          id: 191,
+          name: '양궁',
+          image:
+            'https://storage.googleapis.com/jamanchi_bucket/d00b6adf-0ced-41b8-ac04-fe9b49b8df8b',
+        },
+        {
+          id: 192,
+          name: '골프',
+          image:
+            'https://storage.googleapis.com/jamanchi_bucket/aa4e4ca8-be36-45fb-894e-8f79150f232f',
+        },
+      ])
     )
   ),
   // 취미 리스트 요청
   rest.get('/api/v1/hobbies/sub', (_, res, ctx) =>
     res(
+      ctx.delay(2000),
       ctx.status(200),
       ctx.json({
         contents: [
