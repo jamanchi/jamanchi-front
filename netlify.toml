@@ -3,3 +3,8 @@ from = "/proxy/*"
   to = "https://port-0-jamanchi-back-7xwyjq992llj9hm2l9.sel4.cloudtype.app/:splat"  
   status = 200
   force = true
+
+[[redirects]]
+from = "/*"
+  to = "/index"  
+  status = 200
