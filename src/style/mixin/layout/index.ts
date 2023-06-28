@@ -16,6 +16,7 @@ export const pageContainer = css`
   flex-direction: column;
   width: 400px;
   height: 790px;
+  min-height: 740px;
   font-family: 'MBJUA';
   & > div {
     margin-left: 20px;

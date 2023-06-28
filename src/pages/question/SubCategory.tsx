@@ -10,6 +10,7 @@ import {
   SUB_CATEGORY_RESULT,
 } from './constants';
 import { pageContainer } from '@/style/mixin';
+import Button from '@/components/button';
 
 const SubCategory = () => {
   const [selectedStep1Option, setSelectedStep1Option] = useState(-1);
@@ -103,9 +104,11 @@ const SubCategory = () => {
           </OptionBox>
         </Option>
       </Step>
-      <ResultBtn onClick={getResult}>
-        <span>{SUB_CATEGORY_RESULT}</span>
-      </ResultBtn>
+      <ButtonGroup>
+        <Button type="button" onClick={getResult}>
+          <span>{SUB_CATEGORY_RESULT}</span>
+        </Button>
+      </ButtonGroup>
     </Wrapper>
   );
 };
@@ -123,7 +126,6 @@ const Wrapper = styled.div`
 const Step = styled.div`
   margin-top: 20px;
   margin-bottom: 90px;
-  width: 100%;
 `;
 const StepTitle = styled.span`
   font-size: 26px;
@@ -132,7 +134,6 @@ const StepTitle = styled.span`
 
 const Option = styled.div`
   display: flex;
-  width: 100%;
   height: 100%;
   gap: 20px;
 `;
@@ -157,25 +158,10 @@ const OptionBox = styled.div<{ selected: boolean }>`
   }
 `;
 
-const ResultBtn = styled.div`
-  position: relative;
-  bottom: -30px;
+const ButtonGroup = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
-  height: 70px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-  border-radius: 20px;
-  background-color: ${colors.primary};
-  color: white;
-  font-weight: 600;
-
-  &:hover {
-    background-color: ${colors.secondary};
-    color: black;
-  }
+  flex-direction: column;
+  margin-top: 40px;
 `;
 
 export default SubCategory;

@@ -6,6 +6,7 @@ import { colors } from '@/style/variables';
 import { KEYWORDS } from './constants';
 import { pageContainer } from '@/style/mixin';
 import { shadow } from '@/style/variables/color';
+import Button from '@/components/button';
 
 const keywordsSet: Set<number> = new Set();
 
@@ -71,15 +72,19 @@ const Keywords = () => {
       <Limit>
         <span>최대 2개까지 선택가능</span>
       </Limit>
-      {tmp ? (
-        ''
-      ) : (
-        <Tem>
-          <span>점검중 : 2개 모두 선택해 주세요</span>
-        </Tem>
-      )}
 
-      <ResultBtn onClick={handleResultBtn}>결과 보기</ResultBtn>
+      <ButtonGroup>
+        {tmp ? (
+          ''
+        ) : (
+          <Tem>
+            <span>점검중 : 2개 모두 선택해 주세요</span>
+          </Tem>
+        )}
+        <Button type="button" onClick={handleResultBtn}>
+          결과 보기
+        </Button>
+      </ButtonGroup>
     </Wrapper>
   );
 };
@@ -141,32 +146,21 @@ const KeywordBox = styled.div`
   }
 `;
 
-const ResultBtn = styled.div`
+const ButtonGroup = styled.div`
   position: relative;
-  bottom: -150px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
-  height: 70px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-  border-radius: 20px;
-  background-color: ${colors.primary};
-  color: white;
-  font-weight: 600;
+  align-items: flex-end;
+  height: 80px;
 
-  &:hover {
-    background-color: ${colors.secondary};
-    color: black;
-  }
+  margin-top: 120px;
 `;
 
 const Tem = styled.div`
   position: absolute;
-  bottom: 235px;
-  right: 830px;
+  top: -20px;
+  height: 50px;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
 
