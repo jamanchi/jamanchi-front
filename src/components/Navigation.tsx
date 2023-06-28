@@ -30,6 +30,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
+  position: relative;
 `;
 
 const Left = styled.div`
@@ -39,6 +41,7 @@ const Left = styled.div`
 const Center = styled.div`
   position: absolute;
 `;
+
 const Right = styled.div`
   margin-left: auto;
   margin-right: 18px;
