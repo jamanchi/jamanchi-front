@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { colors } from '@/style/variables';
-import ResultCard from './components/ResultCard';
 import { shareLink } from '@/utils/shareLink';
 import Button from '@/components/button';
 import { pageContainer } from '@/style/mixin';
@@ -10,23 +9,13 @@ import useQueryString from '@/hooks/useQueryString';
 import { shadow } from '@/style/variables/color';
 import jamanchi from '@/assets/images/jamanchi.png';
 import useResultData from './hooks/useResultData';
-
-export interface IResult {
-  title: string;
-  image: string;
-  result: IResultItem[];
-}
-
-interface IResultItem {
-  keyword: string;
-  description: string;
-}
+import CardSlider from '@/components/CardSlider';
 
 const Result = () => {
   const { getParams } = useQueryString();
   const hobbyId = getParams('id') || '';
   const keywords = getParams('keywords')?.split(',') || [];
-  const [resultData, hobby] = useResultData(hobbyId, keywords);
+  const { resultData, hobby } = useResultData(hobbyId, keywords);
   const navigate = useNavigate();
   const previousBtn = () => navigate(-1);
 
@@ -35,10 +24,19 @@ const Result = () => {
       <Navigation leftOnClick={previousBtn} />
       <Title>{resultData?.title}</Title>
       <Image
-        src={hobby.image ?? jamanchi}
+        src={hobby?.image ?? jamanchi}
         alt={`${resultData?.title} 이미지`}
       />
-      {resultData && <ResultCard resultData={resultData} />}
+      {resultData && (
+        <CardSlider>
+          {resultData.result.map(({ keyword, description }) => (
+            <>
+              <CardTitle>{keyword}</CardTitle>
+              <CardBody>{description}</CardBody>
+            </>
+          ))}
+        </CardSlider>
+      )}
       <ButtonWrapper>
         <ShareButton
           color="secondary"
@@ -62,10 +60,15 @@ const Result = () => {
 
 const Wrapper = styled.div`
   ${pageContainer}
-  overflow: hidden;
+  overflow: hidden scroll;
   box-shadow: ${shadow.box};
   border-radius: 20px;
   padding-top: 10px;
+  &::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: none;
+  }
 `;
 
 const Title = styled.span`
@@ -87,15 +90,29 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
+const CardTitle = styled.h3`
+  color: ${colors.primary};
+  font-weight: bold;
+  margin-bottom: 24px;
+`;
+
+const CardBody = styled.div`
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 29px;
+  margin-bottom: 44px;
 `;
 
 const ShareButton = styled(Button)`
-  margin-top: 44px;
+  margin-top: 15px;
 `;
 
 const HobbyCheckButton = styled(Button)`
