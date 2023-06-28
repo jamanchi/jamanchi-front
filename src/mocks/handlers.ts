@@ -3,17 +3,6 @@ import { rest } from 'msw';
 let count = 0;
 
 export const handlers = [
-  rest.get('/api/v1/hobbies/:id', (_, res, ctx) =>
-    res(
-      ctx.json({
-        id: 125,
-        name: '테니스',
-        image:
-          'https://storage.googleapis.com/jamanchi_bucket/1d04dc82-c5e7-4933-98b3-741b316a4539',
-      })
-    )
-  ),
-
   // 답변결과조회
   rest.get('/api/v1/answer', (req, res, ctx) => {
     const hobbyId = req.url.searchParams.get('hobbyId');
@@ -128,6 +117,17 @@ export const handlers = [
           },
         ],
         last: true,
+      })
+    )
+  ),
+  // id로 취미 정보 조회
+  rest.get('/api/v1/hobbies/:id', (_, res, ctx) =>
+    res(
+      ctx.json({
+        id: 125,
+        name: '테니스',
+        image:
+          'https://storage.googleapis.com/jamanchi_bucket/1d04dc82-c5e7-4933-98b3-741b316a4539',
       })
     )
   ),
