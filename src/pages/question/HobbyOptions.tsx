@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import { MouseEvent } from 'react';
 import Navigation from '@/components/Navigation';
 import { colors, shadow } from '../../style/variables/color/index';
 import { LODING, HOBBYOPTIONS_CHOICE } from './constants/index';
 import { pageContainer } from '@/style/mixin';
-import { PROXY } from '@/constants/proxyURL';
+import useHobbyData from './hooks/useHobbyData';
 
 interface Hobby {
   name: string;
@@ -18,28 +17,11 @@ const HobbyOptions = () => {
   const navigate = useNavigate();
   const previousBtn = () => navigate(-1);
   const { id } = useParams();
-
-  const fetchData = async () => {
-    const response = await fetch(`${PROXY}/api/v1/hobbies/recommend/${id}`);
-    const categoryList = await response?.json();
-    return categoryList;
-  };
-
-  const { isLoading, isError, data, error } = useQuery<Hobby[]>(
-    ['datas', id],
-    fetchData,
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
+  const { isLoading, data } = useHobbyData(id!);
 
   const nextPage = (_: MouseEvent<HTMLElement>, hobbyId: number) => {
     navigate(`/question/step3/${hobbyId}`);
   };
-
-  if (isError) {
-    throw error;
-  }
 
   return (
     <Wrapper>
