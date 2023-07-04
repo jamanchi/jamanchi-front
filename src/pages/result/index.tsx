@@ -116,6 +116,7 @@ const ShareButton = styled(Button)`
 `;
 
 const HobbyCheckButton = styled(Button)`
+  display: none;
   margin-top: 15px;
   a {
     color: inherit;
