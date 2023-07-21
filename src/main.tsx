@@ -12,14 +12,14 @@ import Result from '@/pages/result';
 import Hobby from '@/pages/hobby';
 import SimilarHobbies from './pages/similarHobbies';
 
-(async () => {
-  if (import.meta.env.DEV) {
+if (process.env.NODE_ENV === 'development') {
+  (async () => {
     const { worker } = await import('./mocks/browser');
     worker.start();
-  }
-})();
+  })();
+}
 
-const router = createBrowserRouter([
+export const routesConfig = [
   {
     path: '/',
     element: <App />,
@@ -55,9 +55,11 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
-const queryClient = new QueryClient({
+export const router = createBrowserRouter(routesConfig);
+
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
@@ -66,7 +68,10 @@ const queryClient = new QueryClient({
   },
 });
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(
+  (document.getElementById('root') as HTMLElement) ||
+    document.createElement('div')
+).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

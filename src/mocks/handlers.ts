@@ -100,7 +100,6 @@ export const handlers = [
   // 취미 리스트 요청
   rest.get('/api/v1/hobbies/sub', (_, res, ctx) =>
     res(
-      ctx.delay(2000),
       ctx.status(200),
       ctx.json({
         contents: [
