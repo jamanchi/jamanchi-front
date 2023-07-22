@@ -12,8 +12,8 @@ import Result from '@/pages/result';
 import Hobby from '@/pages/hobby';
 import SimilarHobbies from './pages/similarHobbies';
 
-if (process.env.NODE_ENV === 'development') {
-  (async () => {
+if (import.meta.env.MODE === 'development') {
+  await (async () => {
     const { worker } = await import('./mocks/browser');
     worker.start();
   })();
