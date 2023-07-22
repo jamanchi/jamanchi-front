@@ -42,9 +42,10 @@ const Hobby = () => {
       <ContentContainer>
         {isFetching && <Loader />}
         <List>
-          {hobbies.map((data, i) => (
+          {hobbies.map((data) => (
             <CardContainer
-              key={i}
+              key={data.id}
+              data-testid="hobbyCard"
               onClick={() => {
                 navigate(`/question/step3/${data.id}`);
               }}
