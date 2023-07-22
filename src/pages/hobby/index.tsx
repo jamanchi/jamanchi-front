@@ -15,7 +15,6 @@ import logo from '@/assets/icon_beach.png';
 const Hobby = () => {
   const navigate = useNavigate();
   const { data, isFetching, fetchNextPage } = useFetchHobbies();
-
   const hobbies = useMemo(
     () => (data ? data.pages.flatMap((data) => data.contents) : []),
     [data]
@@ -43,8 +42,9 @@ const Hobby = () => {
       <ContentContainer>
         {isFetching && <Loader />}
         <List>
-          {hobbies.map((data) => (
+          {hobbies.map((data, i) => (
             <CardContainer
+              key={i}
               onClick={() => {
                 navigate(`/question/step3/${data.id}`);
               }}
