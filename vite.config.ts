@@ -20,5 +20,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/vitest-setup.ts'],
+    coverage: {
+      provider: 'v8',
+      enabled: true,
+      exclude: ['src/assets/**', 'src/style/**', 'src/constants/**'],
+    },
   },
 });
