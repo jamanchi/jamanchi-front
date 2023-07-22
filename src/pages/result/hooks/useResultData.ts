@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useQueries } from '@tanstack/react-query';
 import { PROXY } from '@/constants/proxyURL';
 
@@ -19,16 +20,14 @@ const getResult = async (
   hobbyId: string,
   keywords: string[]
 ): Promise<IResult> => {
-  const data = await (
-    await fetch(
-      `${PROXY}/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
-    )
-  ).json();
+  const { data } = await axios(
+    `${PROXY}/api/v1/answer?hobbyId=${hobbyId}&keywordId1=${keywords[0]}&keywordId2=${keywords[1]}`
+  );
 
   return data;
 };
 const getImage = async (hobbyId: string): Promise<IHobbyData> => {
-  const data = await (await fetch(`${PROXY}/api/v1/hobbies/${hobbyId}`)).json();
+  const { data } = await axios(`${PROXY}/api/v1/hobbies/${hobbyId}`);
 
   return data;
 };
