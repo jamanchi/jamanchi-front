@@ -45,7 +45,11 @@ const HobbyOptions = () => {
       ) : (
         <Grid>
           {data?.map((object: Hobby, index: number) => (
-            <HobbyBox key={index} onClick={(_) => nextPage(_, object.id)}>
+            <HobbyBox
+              role="button"
+              key={index}
+              onClick={(_) => nextPage(_, object.id)}
+            >
               {object.name}
             </HobbyBox>
           ))}
