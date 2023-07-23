@@ -58,6 +58,7 @@ const Keywords = () => {
         {KEYWORDS?.map((object, index) => (
           <KeywordBox
             key={index}
+            role="button"
             style={{
               backgroundColor: keywordsSet.has(object.id) ? colors.primary : '',
               color: keywordsSet.has(object.id) ? colors.secondary : '',
