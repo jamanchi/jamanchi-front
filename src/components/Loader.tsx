@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { colors } from '@/style/variables';
 
 const Loader = () => (
-  <Wrapper>
+  <Wrapper data-testid="loader">
     <LoaderBody>
       <Shadow />
       <Box />
