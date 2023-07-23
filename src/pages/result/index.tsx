@@ -30,10 +30,10 @@ const Result = () => {
       {resultData && (
         <CardSlider>
           {resultData.result.map(({ keyword, description }) => (
-            <>
+            <div key={keyword}>
               <CardTitle>{keyword}</CardTitle>
               <CardBody>{description}</CardBody>
-            </>
+            </div>
           ))}
         </CardSlider>
       )}
