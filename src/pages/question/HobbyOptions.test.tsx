@@ -22,7 +22,7 @@ describe('취미 선택 페이지 통합 테스트', () => {
 
     await waitFor(
       async () => {
-        const hobbyBtn = await screen.findByText('수영');
+        const hobbyBtn = await screen.findByText('테니스');
         await user.click(hobbyBtn);
       },
       { timeout: 5000 }

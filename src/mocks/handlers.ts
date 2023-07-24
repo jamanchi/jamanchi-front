@@ -14,13 +14,13 @@ export const handlers = [
         ctx.status(200),
         ctx.json({
           id: hobbyId,
-          title: '스키',
+          title: '테니스',
           image:
             'https://media.istockphoto.com/id/1270325495/ko/%EC%82%AC%EC%A7%84/%EA%B7%B8%EB%A3%B9-%EC%8A%A4%ED%82%A4.jpg?s=2048x2048&w=is&k=20&c=lqEZTdJtO5Mai-4an6SaGEK58WC30wD_DZf0gxjOvNA=',
           result: [
             {
               keyword: '간단 설명',
-              description: '스키 입니다.',
+              description: '테니스 입니다.',
             },
             {
               keyword: '필수 물품',
