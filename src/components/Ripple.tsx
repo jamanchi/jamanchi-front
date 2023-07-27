@@ -18,7 +18,7 @@ const useDebouncedRippleCleanUp = (
   cleanUpFunction: () => void
 ) => {
   useLayoutEffect(() => {
-    let bounce: number | undefined;
+    let bounce: NodeJS.Timeout | undefined;
     if (rippleCount > 0) {
       clearTimeout(bounce);
 
