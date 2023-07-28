@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from './ErrorFallback';
+import ErrorFallback from '.';
 
 const ErrorComponent = () => {
   throw Error('테스트 에러');

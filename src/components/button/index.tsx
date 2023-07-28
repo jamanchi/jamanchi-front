@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-import { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 import { colors } from '@/style/variables';
 import { HEIGHT } from './constant';
 import Ripple from '../Ripple';
 import BMJUA from '@/style/mixin/font/BMJUA_otf.otf';
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+interface IProps extends ComponentProps<'button'> {
   color?: 'primary' | 'secondary';
   fontColor?: 'white' | 'black';
+  children: string;
 }
 
 const Button = ({
@@ -15,7 +16,7 @@ const Button = ({
   fontColor = 'white',
   children,
   ...props
-}: PropsWithChildren<ButtonProps>) => (
+}: PropsWithChildren<IProps>) => (
   <StyledButton color={color} fontColor={fontColor} {...props}>
     {children}
     <Ripple duration={700} color={colors[color as keyof typeof colors]} />

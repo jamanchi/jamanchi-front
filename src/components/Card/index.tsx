@@ -1,26 +1,19 @@
 import styled from '@emotion/styled';
-import { MouseEventHandler, PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 import { colors } from '@/style/variables';
 
-interface IProps {
+interface IProps extends ComponentProps<'div'> {
   textColor?: 'primary' | 'secondary' | 'gray' | 'black' | 'white';
   borderColor?: 'primary' | 'secondary' | 'gray';
-  onClick?: MouseEventHandler;
 }
 
 const Card = ({
   borderColor = 'primary',
   textColor = 'black',
-  onClick,
   children,
   ...props
 }: PropsWithChildren<IProps>) => (
-  <Wrapper
-    borderColor={borderColor}
-    textColor={textColor}
-    onClick={onClick}
-    {...props}
-  >
+  <Wrapper borderColor={borderColor} textColor={textColor} {...props}>
     {children}
   </Wrapper>
 );
@@ -34,5 +27,6 @@ const Wrapper = styled.section<IProps>`
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 10px;
 `;
 export default Card;

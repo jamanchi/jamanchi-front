@@ -2,15 +2,15 @@ import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/style/variables';
 
-const Loader = () => (
+interface IProps {
+  duration?: number;
+}
+
+const Loader = ({ duration = 0.5 }: IProps) => (
   <Wrapper data-testid="loader">
     <LoaderBody>
-      <Shadow />
-      <Box />
-    </LoaderBody>
-    <LoaderBody>
-      <Shadow />
-      <Box />
+      <Shadow duration={duration} />
+      <Box duration={duration} />
     </LoaderBody>
   </Wrapper>
 );
@@ -42,11 +42,11 @@ const LoaderBody = styled.div`
   left: calc(50% - 20px);
 `;
 
-const Box = styled.div`
+const Box = styled.div<{ duration: number }>`
   width: 50px;
   height: 50px;
   background: ${colors.primary};
-  animation: ${animate} 0.5s linear infinite;
+  animation: ${animate} ${({ duration }) => `${duration}s`} linear infinite;
   position: absolute;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@ const Box = styled.div`
   z-index: 90;
 `;
 
-const Shadow = styled.div`
+const Shadow = styled.div<{ duration: number }>`
   width: 50px;
   height: 5px;
   background: #000;
@@ -63,7 +63,7 @@ const Shadow = styled.div`
   top: 59px;
   left: 0;
   border-radius: 50%;
-  animation: ${shadow} 0.5s linear infinite;
+  animation: ${shadow} ${({ duration }) => `${duration}s`} linear infinite;
 `;
 
 const Wrapper = styled.div`

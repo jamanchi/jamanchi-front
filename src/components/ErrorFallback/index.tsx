@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Card from './Card';
+import Card from '../Card';
 import { colors } from '@/style/variables';
-import Button from './button';
+import Button from '../button';
 
 interface IProps {
   error: Error;

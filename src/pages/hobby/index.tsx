@@ -100,6 +100,7 @@ const List = styled.div`
 const CardContainer = styled(Card)`
   position: relative;
   overflow: hidden;
+  padding: 0;
   width: ${(400 - PADDING * SPAN - GAP) / 2}px;
   height: ${(400 - PADDING * SPAN - GAP) / 2}px;
   border: 1px ${colors.gray};
