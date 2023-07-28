@@ -8,7 +8,6 @@ import BMJUA from '@/style/mixin/font/BMJUA_otf.otf';
 interface IProps extends ComponentProps<'button'> {
   color?: 'primary' | 'secondary';
   fontColor?: 'white' | 'black';
-  children: string;
 }
 
 const Button = ({
