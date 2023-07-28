@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import { MouseEvent, ReactElement, TouchEventHandler, useState } from 'react';
-import Card from './Card';
+import Card from '../Card';
 import { colors } from '@/style/variables';
 
 interface IProps {
-  children: ReactElement[];
+  children?: ReactElement[];
   width?: number;
   gap?: number;
 }
 
-const CardSlider = ({ width = 272, gap = 24, children }: IProps) => {
+const CardSlider = ({ width = 272, gap = 24, children = [] }: IProps) => {
   const [current, setCurrent] = useState(0);
   const [touchX, setTouchX] = useState(0);
 
