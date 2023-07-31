@@ -24,6 +24,7 @@ export default defineConfig({
       provider: 'v8',
       enabled: true,
       exclude: ['src/assets/**', 'src/style/**', 'src/constants/**'],
+      reporter: ['text', 'json-summary', 'json'],
     },
   },
 });
