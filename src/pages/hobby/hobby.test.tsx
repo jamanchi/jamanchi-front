@@ -19,5 +19,6 @@ describe('취미 목록 페이지 통합 테스트', () => {
     await user.click(hobbyCards[0]);
 
     await screen.findByText('원하는 키워드를 골라주세요');
+    throw Error('test');
   });
 });
