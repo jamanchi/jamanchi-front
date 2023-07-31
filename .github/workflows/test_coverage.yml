@@ -20,4 +20,4 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
-          github-token: ${{ secrets.PR_WIHTE_TOKEN }}
+          github-token: ${{ secrets.PR_WRITE_TOKEN }}
