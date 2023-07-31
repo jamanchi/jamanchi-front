@@ -1,2 +1,1 @@
-export const PROXY =
-  window.location.hostname === 'localhost' ? '' : '/proxytest';
+export const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
