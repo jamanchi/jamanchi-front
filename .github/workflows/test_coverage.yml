@@ -1,6 +1,6 @@
 name: '테스트 코드 실행'
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   build:
@@ -15,9 +15,8 @@ jobs:
           node-version: '20.x'
       - run: npm ci
       - run: npx vitest --coverage
-        continue-on-error: true
       - name: 테스트 커버리지 결과 PR에 코멘트 추가하기
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
         with:
-          github-token: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.PR_WRITE_TOKEN }}
