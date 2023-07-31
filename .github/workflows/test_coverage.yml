@@ -1,0 +1,25 @@
+
+name: "테스트 코드 실행"
+
+on: [push, pull_request]
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 코드 체크아웃
+      uses: actions/checkout@v3
+    - name: 노드 설치
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+    - run: npm ci
+    - run: npx vitest --coverage
+      continue-on-error: true
+    - name: 테스트 커버리지 결과 PR에 코멘트 추가하기
+      if: always()
+      uses:  davelosert/vitest-coverage-report-action@v2
+      with:
+        github-token: ${{ secrets.TOKEN }}
+        
