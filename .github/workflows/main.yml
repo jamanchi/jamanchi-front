@@ -1,7 +1,8 @@
-
 name: 'Chromatic Deployment'
 
-on: push
+on:
+  push:
+    - main
 
 jobs:
   test:
